@@ -1,0 +1,1162 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>Taxi Abrechnung</title>
+<link rel="manifest" href="data:application/manifest+json;base64,eyJuYW1lIjogIlRheGkgU2NoaWNodGFicmVjaG51bmciLCAic2hvcnRfbmFtZSI6ICJUYXhhbWV0ZXIiLCAic3RhcnRfdXJsIjogIi4vIiwgImRpc3BsYXkiOiAic3RhbmRhbG9uZSIsICJiYWNrZ3JvdW5kX2NvbG9yIjogIiMxYTFhMWEiLCAidGhlbWVfY29sb3IiOiAiI2YwYzA0MCIsICJpY29ucyI6IFt7InNyYyI6ICJkYXRhOmltYWdlL3N2Zyt4bWw7YmFzZTY0LFBITjJaeUI0Yld4dWN6MGlhSFIwY0RvdkwzZDNkeTUzTXk1dmNtY3ZNakF3TUM5emRtY2lJSFpwWlhkQ2IzZzlJakFnTUNBMU1USWdOVEV5SWo0S0lDQThjbVZqZENCM2FXUjBhRDBpTlRFeUlpQm9aV2xuYUhROUlqVXhNaUlnY25nOUlqRXdNQ0lnWm1sc2JEMGlJekZoTVdFeFlTSXZQZ29nSUR4eVpXTjBJSGc5SWpnd0lpQjVQU0l5TWpBaUlIZHBaSFJvUFNJek5USWlJR2hsYVdkb2REMGlNVFl3SWlCeWVEMGlNalFpSUdacGJHdzlJaU5tTUdNd05EQWlMejRLSUNBOGNtVmpkQ0I0UFNJeE1qQWlJSGs5SWpFMk1DSWdkMmxrZEdnOUlqSXlNQ0lnYUdWcFoyaDBQU0k1TUNJZ2NuZzlJakUySWlCbWFXeHNQU0lqWmpCak1EUXdJaTgrQ2lBZ1BISmxZM1FnZUQwaU1UTXdJaUI1UFNJeE56QWlJSGRwWkhSb1BTSTVNQ0lnYUdWcFoyaDBQU0kzTUNJZ2NuZzlJamdpSUdacGJHdzlJaU14WVRGaE1XRWlJRzl3WVdOcGRIazlJakF1TnlJdlBnb2dJRHh5WldOMElIZzlJakl6TlNJZ2VUMGlNVGN3SWlCM2FXUjBhRDBpT1RBaUlHaGxhV2RvZEQwaU56QWlJSEo0UFNJNElpQm1hV3hzUFNJak1XRXhZVEZoSWlCdmNHRmphWFI1UFNJd0xqY2lMejRLSUNBOFkybHlZMnhsSUdONFBTSXhOakFpSUdONVBTSXpPRFVpSUhJOUlqUTFJaUJtYVd4c1BTSWpNV0V4WVRGaElpOCtDaUFnUEdOcGNtTnNaU0JqZUQwaU1UWXdJaUJqZVQwaU16ZzFJaUJ5UFNJeU9DSWdabWxzYkQwaUl6VTFOU0l2UGdvZ0lEeGphWEpqYkdVZ1kzZzlJak0xTWlJZ1kzazlJak00TlNJZ2NqMGlORFVpSUdacGJHdzlJaU14WVRGaE1XRWlMejRLSUNBOFkybHlZMnhsSUdONFBTSXpOVElpSUdONVBTSXpPRFVpSUhJOUlqSTRJaUJtYVd4c1BTSWpOVFUxSWk4K0NpQWdQSEpsWTNRZ2VEMGlPREFpSUhrOUlqSTJNQ0lnZDJsa2RHZzlJall3SWlCb1pXbG5hSFE5SWpNd0lpQnllRDBpTmlJZ1ptbHNiRDBpSXpGaE1XRXhZU0lnYjNCaFkybDBlVDBpTUM0MElpOCtDaUFnUEhKbFkzUWdlRDBpTXpjeUlpQjVQU0l5TmpBaUlIZHBaSFJvUFNJMk1DSWdhR1ZwWjJoMFBTSXpNQ0lnY25nOUlqWWlJR1pwYkd3OUlpTXhZVEZoTVdFaUlHOXdZV05wZEhrOUlqQXVOQ0l2UGdvZ0lEeHlaV04wSUhnOUlqRXdNQ0lnZVQwaU1UUTRJaUIzYVdSMGFEMGlOakFpSUdobGFXZG9kRDBpTWpBaUlISjRQU0kySWlCbWFXeHNQU0lqWmpCak1EUXdJaTgrQ2lBZ1BIUmxlSFFnZUQwaU1qVTJJaUI1UFNJek1UQWlJR1p2Ym5RdFptRnRhV3g1UFNKQmNtbGhiQ0lnWm05dWRDMXphWHBsUFNJM01pSWdabTl1ZEMxM1pXbG5hSFE5SW1KdmJHUWlJR1pwYkd3OUlpTXhZVEZoTVdFaUlIUmxlSFF0WVc1amFHOXlQU0p0YVdSa2JHVWlQbFJCV0VrOEwzUmxlSFErQ2p3dmMzWm5QZz09IiwgInNpemVzIjogIjUxMng1MTIiLCAidHlwZSI6ICJpbWFnZS9zdmcreG1sIn1dfQ==">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj4KICA8cmVjdCB3aWR0aD0iNTEyIiBoZWlnaHQ9IjUxMiIgcng9IjEwMCIgZmlsbD0iIzFhMWExYSIvPgogIDxyZWN0IHg9IjgwIiB5PSIyMjAiIHdpZHRoPSIzNTIiIGhlaWdodD0iMTYwIiByeD0iMjQiIGZpbGw9IiNmMGMwNDAiLz4KICA8cmVjdCB4PSIxMjAiIHk9IjE2MCIgd2lkdGg9IjIyMCIgaGVpZ2h0PSI5MCIgcng9IjE2IiBmaWxsPSIjZjBjMDQwIi8+CiAgPHJlY3QgeD0iMTMwIiB5PSIxNzAiIHdpZHRoPSI5MCIgaGVpZ2h0PSI3MCIgcng9IjgiIGZpbGw9IiMxYTFhMWEiIG9wYWNpdHk9IjAuNyIvPgogIDxyZWN0IHg9IjIzNSIgeT0iMTcwIiB3aWR0aD0iOTAiIGhlaWdodD0iNzAiIHJ4PSI4IiBmaWxsPSIjMWExYTFhIiBvcGFjaXR5PSIwLjciLz4KICA8Y2lyY2xlIGN4PSIxNjAiIGN5PSIzODUiIHI9IjQ1IiBmaWxsPSIjMWExYTFhIi8+CiAgPGNpcmNsZSBjeD0iMTYwIiBjeT0iMzg1IiByPSIyOCIgZmlsbD0iIzU1NSIvPgogIDxjaXJjbGUgY3g9IjM1MiIgY3k9IjM4NSIgcj0iNDUiIGZpbGw9IiMxYTFhMWEiLz4KICA8Y2lyY2xlIGN4PSIzNTIiIGN5PSIzODUiIHI9IjI4IiBmaWxsPSIjNTU1Ii8+CiAgPHJlY3QgeD0iODAiIHk9IjI2MCIgd2lkdGg9IjYwIiBoZWlnaHQ9IjMwIiByeD0iNiIgZmlsbD0iIzFhMWExYSIgb3BhY2l0eT0iMC40Ii8+CiAgPHJlY3QgeD0iMzcyIiB5PSIyNjAiIHdpZHRoPSI2MCIgaGVpZ2h0PSIzMCIgcng9IjYiIGZpbGw9IiMxYTFhMWEiIG9wYWNpdHk9IjAuNCIvPgogIDxyZWN0IHg9IjEwMCIgeT0iMTQ4IiB3aWR0aD0iNjAiIGhlaWdodD0iMjAiIHJ4PSI2IiBmaWxsPSIjZjBjMDQwIi8+CiAgPHRleHQgeD0iMjU2IiB5PSIzMTAiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSI3MiIgZm9udC13ZWlnaHQ9ImJvbGQiIGZpbGw9IiMxYTFhMWEiIHRleHQtYW5jaG9yPSJtaWRkbGUiPlRBWEk8L3RleHQ+Cjwvc3ZnPg==">
+<link rel="apple-touch-icon" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj4KICA8cmVjdCB3aWR0aD0iNTEyIiBoZWlnaHQ9IjUxMiIgcng9IjEwMCIgZmlsbD0iIzFhMWExYSIvPgogIDxyZWN0IHg9IjgwIiB5PSIyMjAiIHdpZHRoPSIzNTIiIGhlaWdodD0iMTYwIiByeD0iMjQiIGZpbGw9IiNmMGMwNDAiLz4KICA8cmVjdCB4PSIxMjAiIHk9IjE2MCIgd2lkdGg9IjIyMCIgaGVpZ2h0PSI5MCIgcng9IjE2IiBmaWxsPSIjZjBjMDQwIi8+CiAgPHJlY3QgeD0iMTMwIiB5PSIxNzAiIHdpZHRoPSI5MCIgaGVpZ2h0PSI3MCIgcng9IjgiIGZpbGw9IiMxYTFhMWEiIG9wYWNpdHk9IjAuNyIvPgogIDxyZWN0IHg9IjIzNSIgeT0iMTcwIiB3aWR0aD0iOTAiIGhlaWdodD0iNzAiIHJ4PSI4IiBmaWxsPSIjMWExYTFhIiBvcGFjaXR5PSIwLjciLz4KICA8Y2lyY2xlIGN4PSIxNjAiIGN5PSIzODUiIHI9IjQ1IiBmaWxsPSIjMWExYTFhIi8+CiAgPGNpcmNsZSBjeD0iMTYwIiBjeT0iMzg1IiByPSIyOCIgZmlsbD0iIzU1NSIvPgogIDxjaXJjbGUgY3g9IjM1MiIgY3k9IjM4NSIgcj0iNDUiIGZpbGw9IiMxYTFhMWEiLz4KICA8Y2lyY2xlIGN4PSIzNTIiIGN5PSIzODUiIHI9IjI4IiBmaWxsPSIjNTU1Ii8+CiAgPHJlY3QgeD0iODAiIHk9IjI2MCIgd2lkdGg9IjYwIiBoZWlnaHQ9IjMwIiByeD0iNiIgZmlsbD0iIzFhMWExYSIgb3BhY2l0eT0iMC40Ii8+CiAgPHJlY3QgeD0iMzcyIiB5PSIyNjAiIHdpZHRoPSI2MCIgaGVpZ2h0PSIzMCIgcng9IjYiIGZpbGw9IiMxYTFhMWEiIG9wYWNpdHk9IjAuNCIvPgogIDxyZWN0IHg9IjEwMCIgeT0iMTQ4IiB3aWR0aD0iNjAiIGhlaWdodD0iMjAiIHJ4PSI2IiBmaWxsPSIjZjBjMDQwIi8+CiAgPHRleHQgeD0iMjU2IiB5PSIzMTAiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSI3MiIgZm9udC13ZWlnaHQ9ImJvbGQiIGZpbGw9IiMxYTFhMWEiIHRleHQtYW5jaG9yPSJtaWRkbGUiPlRBWEk8L3RleHQ+Cjwvc3ZnPg==">
+<style>
+:root {
+  --bg:       #111;
+  --card:     #1c1c1c;
+  --card2:    #242424;
+  --border:   #2e2e2e;
+  --text:     #f0f0f0;
+  --muted:    #888;
+  --accent:   #f0c040;
+  --green:    #2ecc71;
+  --red:      #e74c3c;
+  --blue:     #4a9edd;
+  --radius:   10px;
+}
+* { box-sizing:border-box; margin:0; padding:0; -webkit-tap-highlight-color:transparent; }
+body { background:var(--bg); color:var(--text); font-family:-apple-system,BlinkMacSystemFont,'SF Pro Text',sans-serif; font-size:16px; min-height:100vh; }
+
+/* ── Tabs ─────────────────────────────────────── */
+.tabs { display:flex; background:#0a0a0a; border-bottom:1px solid var(--border); position:sticky; top:0; z-index:100; }
+.tab { flex:1; padding:13px 4px 11px; text-align:center; font-size:11px; font-weight:600; color:var(--muted); letter-spacing:.04em; text-transform:uppercase; border:none; background:none; cursor:pointer; transition:.15s; border-bottom:2px solid transparent; }
+.tab.active { color:var(--accent); border-bottom-color:var(--accent); }
+.panel { display:none; padding:12px; }
+.panel.active { display:block; }
+
+/* ── Cards ────────────────────────────────────── */
+.card { background:var(--card); border:1px solid var(--border); border-radius:var(--radius); padding:14px; margin-bottom:10px; }
+.card-title { font-size:11px; font-weight:700; color:var(--accent); text-transform:uppercase; letter-spacing:.08em; margin-bottom:12px; }
+
+/* ── Stats ────────────────────────────────────── */
+.stats { display:grid; grid-template-columns:repeat(3,1fr); gap:6px; margin-bottom:10px; }
+.stat { background:var(--card); border:1px solid var(--border); border-radius:8px; padding:8px 10px; }
+.stat-label { font-size:9px; color:var(--muted); text-transform:uppercase; letter-spacing:.06em; margin-bottom:2px; }
+.stat-value { font-size:16px; font-weight:700; }
+
+/* ── Datum ────────────────────────────────────── */
+.datum-row { display:flex; align-items:center; gap:8px; margin-bottom:10px; }
+.datum-row input[type=date] { flex:1; padding:9px 12px; background:var(--card); border:1px solid var(--border); border-radius:8px; color:var(--text); font-size:15px; }
+.datum-badge { background:var(--accent); color:#111; border-radius:20px; padding:7px 12px; font-size:13px; font-weight:700; white-space:nowrap; }
+
+/* ── Quick Buttons ────────────────────────────── */
+.quick-btns { display:flex; gap:5px; margin-bottom:8px; }
+.quick-btn { flex:1; padding:9px 4px; border-radius:8px; border:1px solid var(--border); background:var(--card2); color:var(--muted); font-size:13px; font-weight:600; cursor:pointer; transition:.1s; }
+.quick-btn.active { background:var(--accent); color:#111; border-color:var(--accent); }
+
+/* ── Form ─────────────────────────────────────── */
+.form-grid { display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-bottom:8px; }
+.field label { display:block; font-size:10px; color:var(--muted); text-transform:uppercase; letter-spacing:.06em; margin-bottom:5px; }
+.field-row { display:flex; gap:4px; }
+.field-row input { flex:1; min-width:0; }
+input[type=text], input[type=number], input[type=date], select {
+  width:100%; padding:10px 12px; background:var(--card2); border:1px solid var(--border);
+  border-radius:8px; color:var(--text); font-size:16px; outline:none; appearance:none;
+}
+input:focus { border-color:var(--accent); }
+select { background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%23888' d='M6 8L0 0h12z'/%3E%3C/svg%3E"); background-repeat:no-repeat; background-position:right 12px center; padding-right:32px; }
+.btn-00 { padding:0 12px; background:var(--card2); border:1px solid var(--border); border-radius:8px; color:var(--muted); font-size:15px; font-weight:700; cursor:pointer; flex-shrink:0; }
+
+/* ── USt Toggle ───────────────────────────────── */
+.ust-row { display:flex; align-items:center; justify-content:space-between; margin-bottom:8px; }
+.ust-btns { display:flex; gap:4px; }
+.ust-btn { padding:6px 14px; border-radius:6px; border:1px solid var(--border); background:var(--card2); color:var(--muted); font-size:13px; font-weight:600; cursor:pointer; }
+.ust-btn.active { background:var(--accent); color:#111; border-color:var(--accent); }
+
+/* ── Rechnung Box ─────────────────────────────── */
+.rechnung-box { background:var(--card2); border:1px solid #2a4060; border-radius:8px; padding:10px; margin-bottom:8px; display:none; }
+.rechnung-box.visible { display:block; }
+
+/* ── Kalkulation Preview ──────────────────────── */
+.calc { display:grid; grid-template-columns:1fr 1fr 1fr; gap:6px; background:var(--card2); border-radius:8px; padding:10px; margin-bottom:10px; }
+.calc-item { text-align:center; }
+.calc-lbl { font-size:9px; color:var(--muted); text-transform:uppercase; letter-spacing:.05em; margin-bottom:2px; }
+.calc-val { font-size:15px; font-weight:700; }
+
+/* ── Add Button ───────────────────────────────── */
+.btn-add { width:100%; padding:14px; background:var(--accent); color:#111; border:none; border-radius:10px; font-size:16px; font-weight:700; cursor:pointer; margin-bottom:12px; }
+.btn-add:active { transform:scale(.98); }
+.btn-add.edit { background:#2a2a2a; color:var(--accent); border:1px solid var(--accent); }
+
+/* ── Fahrtliste ───────────────────────────────── */
+.fahrt { display:flex; align-items:center; gap:10px; background:var(--card); border:1px solid var(--border); border-radius:8px; padding:10px 12px; margin-bottom:5px; cursor:pointer; }
+.fahrt:active { background:var(--card2); }
+.fahrt-nr { font-size:11px; color:var(--muted); font-weight:600; min-width:22px; }
+.fahrt-taxa { font-size:16px; font-weight:700; }
+.fahrt-tag { font-size:10px; font-weight:700; padding:3px 7px; border-radius:5px; background:var(--card2); color:var(--muted); }
+.tag-bar { background:#1a2a1a; color:var(--green); }
+.tag-kk  { background:#1a1a3a; color:var(--blue); }
+.tag-fn  { background:#2a1a2a; color:#c084fc; }
+.tag-kts { background:#2a2a1a; color:#fb923c; }
+.tag-ref { background:#2a1a1a; color:#f87171; }
+.fahrt-anteil { margin-left:auto; font-size:14px; font-weight:700; color:var(--green); }
+.fahrt-tip { font-size:11px; color:var(--accent); }
+
+/* ── Schichtabrechnung ────────────────────────── */
+.abr { background:var(--card); border:1px solid var(--border); border-radius:var(--radius); padding:14px; margin-top:10px; }
+.abr-row { display:flex; justify-content:space-between; align-items:center; padding:6px 0; border-bottom:1px solid var(--border); font-size:14px; }
+.abr-row:last-child { border:none; }
+.abr-row.total { font-weight:700; font-size:16px; margin-top:4px; }
+.abr-lbl { color:var(--muted); }
+
+/* ── Kasse ────────────────────────────────────── */
+.kasse-box { border-radius:10px; padding:14px; text-align:center; margin-top:10px; }
+.kasse-box.pos { background:#2a1a1a; border:1px solid #4a2222; }
+.kasse-box.neg { background:#1a2a1a; border:1px solid #224a22; }
+.kasse-box.zero { background:var(--card); border:1px solid var(--border); }
+.kasse-lbl { font-size:12px; color:var(--muted); margin-bottom:4px; }
+.kasse-val { font-size:28px; font-weight:700; }
+
+/* ── Übersicht ────────────────────────────────── */
+.month-grid { display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-bottom:12px; }
+.month-card { background:var(--card); border:1px solid var(--border); border-radius:8px; padding:12px; }
+.month-name { font-size:12px; font-weight:700; color:var(--accent); margin-bottom:8px; }
+.mc-row { display:flex; justify-content:space-between; font-size:13px; padding:2px 0; }
+.mc-row.hl { font-weight:700; color:var(--green); border-top:1px solid var(--border); margin-top:4px; padding-top:6px; }
+.ov-table { width:100%; border-collapse:collapse; font-size:13px; }
+.ov-table th { text-align:left; color:var(--muted); font-size:10px; text-transform:uppercase; letter-spacing:.05em; padding:6px 4px; border-bottom:1px solid var(--border); }
+.ov-table td { padding:8px 4px; border-bottom:1px solid #1e1e1e; }
+.ov-table tr:last-child td { border:none; }
+td.green { color:var(--green); font-weight:700; }
+td.red   { color:var(--red);   font-weight:700; }
+
+/* ── Export ───────────────────────────────────── */
+.export-btns { display:flex; flex-direction:column; gap:8px; }
+.btn-export { padding:12px; border-radius:8px; border:1px solid var(--border); background:var(--card); color:var(--text); font-size:14px; font-weight:600; cursor:pointer; text-align:left; }
+.btn-export:active { background:var(--card2); }
+
+/* ── Einstellungen ────────────────────────────── */
+.sett-section { margin-bottom:20px; }
+.sett-title { font-size:10px; font-weight:700; color:var(--accent); text-transform:uppercase; letter-spacing:.08em; margin-bottom:10px; }
+.sett-field { margin-bottom:10px; }
+.sett-field label { display:block; font-size:12px; color:var(--muted); margin-bottom:5px; }
+.btn-save { width:100%; padding:13px; background:var(--accent); color:#111; border:none; border-radius:10px; font-size:15px; font-weight:700; cursor:pointer; margin-top:8px; }
+.btn-import { width:100%; padding:12px; background:var(--card2); color:var(--text); border:1px solid var(--border); border-radius:10px; font-size:14px; font-weight:600; cursor:pointer; margin-top:8px; }
+
+/* ── Toast ────────────────────────────────────── */
+.toast { position:fixed; bottom:30px; left:50%; transform:translateX(-50%); background:#333; color:#fff; padding:10px 20px; border-radius:20px; font-size:14px; z-index:999; opacity:0; transition:.3s; pointer-events:none; white-space:nowrap; }
+.toast.show { opacity:1; }
+
+.schicht-abrechnung { --surface:#161616; --text-muted:#7a7570; --text:#f0ede8; --border:#2a2a2a;
+  --green:#4caf78; --red:#e05a5a; --blue:#5aa0e0; --accent:#f0c040; }
+/* Schichtabrechnung */
+  .schicht-abrechnung {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 20px;
+  }
+
+  .schicht-abrechnung h2 {
+    font-family: Verdana, Geneva, sans-serif;
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    margin-bottom: 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .sa-sub {
+    font-size: 0.65rem;
+    color: var(--text-muted);
+    font-weight: 400;
+    letter-spacing: 0.08em;
+  }
+
+  .sa-block {
+    border-top: 1px solid var(--border);
+    padding: 10px 0;
+  }
+
+  .sa-section-title {
+    font-size: 0.65rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 8px;
+    font-weight: 500;
+  }
+
+  .sa-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px 0;
+    font-size: 0.85rem;
+  }
+
+  .sa-row.sa-highlight {
+    background: rgba(240,192,64,0.06);
+    border-radius: 4px;
+    padding: 6px 8px;
+    margin: 2px -8px;
+  }
+
+  .sa-label { color: var(--text); }
+
+  .sa-val {
+    font-weight: 500;
+    font-size: 0.9rem;
+  }
+
+  .sa-minus { color: var(--red); }
+  .sa-plus  { color: var(--green); }
+  .sa-highlight .sa-val { color: var(--accent); }
+
+  .sa-netto-bar {
+    margin-top: 12px;
+    border-radius: 8px;
+    padding: 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .sa-netto-bar.pay-unternehmer {
+    background: rgba(224,90,90,0.15);
+    border: 1px solid rgba(224,90,90,0.4);
+  }
+
+  .sa-netto-bar.pay-fahrer {
+    background: rgba(76,175,120,0.15);
+    border: 1px solid rgba(76,175,120,0.4);
+  }
+
+  .sa-netto-bar.pay-zero {
+    background: rgba(240,192,64,0.1);
+    border: 1px solid rgba(240,192,64,0.3);
+  }
+
+  .sa-netto-label {
+    font-family: Verdana, Geneva, sans-serif;
+    font-weight: 700;
+    font-size: 0.8rem;
+    letter-spacing: 0.04em;
+  }
+
+  .sa-netto-sub {
+    font-size: 0.65rem;
+    color: var(--text-muted);
+    margin-top: 2px;
+  }
+
+  .sa-netto-val {
+    font-family: Verdana, Geneva, sans-serif;
+    font-weight: 800;
+    font-size: 1.5rem;
+    letter-spacing: -0.02em;
+    white-space: nowrap;
+  }
+
+  .pay-unternehmer .sa-netto-val { color: var(--red); }
+  .pay-fahrer .sa-netto-val      { color: var(--green); }
+  .pay-zero .sa-netto-val        { color: var(--accent); }
+
+/* ── Leer ─────────────────────────────────────── */
+.empty { text-align:center; padding:30px 20px; color:var(--muted); font-size:14px; }
+.empty .icon { font-size:32px; margin-bottom:8px; }
+</style>
+</head>
+<body>
+
+<!-- Tabs -->
+<div class="tabs">
+  <button class="tab active" onclick="showTab('schicht')">🚕 Schicht</button>
+  <button class="tab" onclick="showTab('uebersicht')">📊 Übersicht</button>
+  <button class="tab" onclick="showTab('einstellungen')">⚙️ Einst.</button>
+</div>
+
+<!-- ═══════════ SCHICHT ═══════════ -->
+<div id="panel-schicht" class="panel active">
+
+  <!-- Datum + Stats -->
+  <div class="datum-row">
+    <input type="date" id="dateInput" onchange="onDateChange()">
+    <div class="datum-badge" id="datumBadge">—</div>
+  </div>
+  <div class="stats">
+    <div class="stat"><div class="stat-label" id="statLabelNetto">Tag Netto</div><div class="stat-value" id="statHeuteNetto" style="color:var(--green)">—</div></div>
+    <div class="stat"><div class="stat-label" id="statLabelTip">Tag Tip</div><div class="stat-value" id="statHeuteTip" style="color:var(--accent)">—</div></div>
+    <div class="stat"><div class="stat-label" id="statLabelMonat">Monat</div><div class="stat-value" id="statMonatNetto" style="color:var(--blue)">—</div></div>
+  </div>
+
+  <!-- Formular -->
+  <div class="card" style="margin-bottom:10px">
+    <!-- Schnell-Zahlart -->
+    <div class="quick-btns">
+      <button class="quick-btn active" id="qBar"  onclick="setZahlart('Bar')">Bar</button>
+      <button class="quick-btn"        id="qKK"   onclick="setZahlart('KK')">KK</button>
+      <button class="quick-btn"        id="qFNA"  onclick="setZahlart('FN-A')">FN-App</button>
+    </div>
+    <!-- Zahlart Dropdown -->
+    <div class="field" style="margin-bottom:10px">
+      <select id="zahlart" onchange="onZahlartChange()">
+        <option value="Bar">Bar</option>
+        <option value="KK">KK (Kreditkarte)</option>
+        <option value="FN-A">FN-App</option>
+        <option value="FN-B">FN-Bar</option>
+        <option value="FN-A FP">FN-App FP</option>
+        <option value="KTS">KTS</option>
+        <option value="KTS-ZZ">KTS-ZZ</option>
+        <option value="Re.F">Re.F (Rechnung)</option>
+        <option value="DB-Gutschein">DB-Gutschein</option>
+        <option value="GS-VW">GS-VW</option>
+      </select>
+    </div>
+
+    <!-- KTS Block -->
+    <div id="ktsBlock" style="display:none">
+      <div style="background:#1e1a10;border:1px solid #3a2a10;border-radius:8px;padding:8px 12px;font-size:12px;color:#fb923c;margin-bottom:8px" id="ktsInfo">— km eingeben</div>
+      <div class="form-grid">
+        <div class="field">
+          <label>Kilometer</label>
+          <input type="number" id="ktsKm" placeholder="0" inputmode="numeric" oninput="onKtsKmChange()">
+        </div>
+        <div class="field" id="ktsZZField" style="display:none">
+          <label>Zuzahlung</label>
+          <input type="text" id="ktsZZ" readonly style="color:var(--blue)">
+        </div>
+        <div class="field">
+          <label>Trinkgeld</label>
+          <div class="field-row">
+            <input type="text" id="ktsTip" placeholder="0" inputmode="numeric" oninput="onMoney(this)">
+            <button class="btn-00" onclick="add00('ktsTip')">00</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Standard Block -->
+    <div id="stdBlock">
+      <!-- Taxa + Bezahlt -->
+      <div class="form-grid">
+        <div class="field">
+          <label id="taxaLbl">Taxameter</label>
+          <div class="field-row">
+            <input type="text" id="taxa" placeholder="0" inputmode="numeric" oninput="onMoney(this)" enterkeyhint="next">
+            <button class="btn-00" onclick="add00('taxa')">00</button>
+          </div>
+        </div>
+        <div class="field">
+          <label>Bezahlt</label>
+          <div class="field-row">
+            <input type="text" id="bezahlt" placeholder="= Taxa" inputmode="numeric" onfocus="this.dataset.manual='1'" oninput="onMoney(this)" enterkeyhint="next">
+            <button class="btn-00" onclick="add00('bezahlt')">00</button>
+          </div>
+        </div>
+      </div>
+      <!-- Tip + Komm -->
+      <div class="form-grid">
+        <div class="field">
+          <label>Trinkgeld <span id="tipAutoLbl" style="color:var(--muted);font-size:9px">(auto)</span></label>
+          <input type="text" id="tip" placeholder="leer=auto" inputmode="numeric" oninput="onMoney(this)" enterkeyhint="next">
+        </div>
+        <div class="field">
+          <label>Kommission</label>
+          <input type="text" id="komm" placeholder="0" inputmode="numeric" oninput="onMoney(this)" enterkeyhint="next">
+        </div>
+      </div>
+    </div>
+
+    <!-- USt -->
+    <div class="ust-row">
+      <span style="font-size:12px;color:var(--muted)">Umsatzsteuer</span>
+      <div class="ust-btns">
+        <button class="ust-btn active" id="ust7"  onclick="setUSt(7)">7%</button>
+        <button class="ust-btn"        id="ust19" onclick="setUSt(19)">19%</button>
+      </div>
+    </div>
+
+    <!-- Rechnung Box -->
+    <div class="rechnung-box" id="rechnungBox">
+      <div style="font-size:10px;color:var(--blue);font-weight:700;text-transform:uppercase;letter-spacing:.07em;margin-bottom:8px">🧾 Rechnungsnummer</div>
+      <input type="text" id="rechnungNr" placeholder="z.B. 20260042" inputmode="numeric">
+    </div>
+
+    <!-- Preview -->
+    <div class="calc" id="calcPreview">
+      <div class="calc-item"><div class="calc-lbl">Trinkgeld</div><div class="calc-val" id="pvTip">—</div></div>
+      <div class="calc-item"><div class="calc-lbl">Anteil 45%</div><div class="calc-val" id="pvAnteil">—</div></div>
+      <div class="calc-item"><div class="calc-lbl">Gesamt</div><div class="calc-val" id="pvGesamt" style="color:var(--green)">—</div></div>
+    </div>
+
+    <button class="btn-add" id="addBtn" onclick="saveFahrt()">+ Fahrt hinzufügen</button>
+  </div>
+
+  <!-- Fahrtliste -->
+  <div id="fahrtListe"></div>
+
+  <!-- Schichtabrechnung -->
+  <div class="schicht-abrechnung" id="schichtAbrSection" style="display:none">
+    <h2><span>Schichtabrechnung</span><span class="sa-sub">Kassenabschluss</span></h2>
+    <div class="sa-block" id="saFahrerBlock" style="display:none">
+      <div class="sa-row"><span class="sa-label" style="color:var(--text-muted)">Fahrer</span><span class="sa-val" id="saFahrerName" style="color:var(--text)">—</span></div>
+      <div class="sa-row"><span class="sa-label" style="color:var(--text-muted)">Fahrernr. / Wagennr.</span><span class="sa-val" id="saFahrerNrWg" style="color:var(--text-muted);font-size:0.8rem">—</span></div>
+    </div>
+    <div class="sa-block">
+      <div class="sa-row"><span class="sa-label">Gesamtumsatz</span><span class="sa-val" id="saUmsatz">—</span></div>
+      <div class="sa-row sa-highlight"><span class="sa-label">55% Unternehmerteil</span><span class="sa-val" id="saAnteil55">—</span></div>
+    </div>
+    <div class="sa-block">
+      <div class="sa-section-title">Nicht-bare Zahlungen <span style="color:var(--text-muted);font-weight:400">(bereits kassiert)</span></div>
+      <div class="sa-row" id="saRowKK" style="display:none"><span class="sa-label">KK (Kreditkarte)</span><span class="sa-val sa-minus" id="saKK">—</span></div>
+      <div class="sa-row" id="saRowDB" style="display:none"><span class="sa-label">DB-Gutschein</span><span class="sa-val sa-minus" id="saDB">—</span></div>
+      <div class="sa-row" id="saRowKTS" style="display:none"><span class="sa-label">KTS</span><span class="sa-val sa-minus" id="saKTS">—</span></div>
+      <div class="sa-row" id="saRowKTSZZ" style="display:none"><span class="sa-label">KTS-ZZ (ohne ZZ)</span><span class="sa-val sa-minus" id="saKTSZZ">—</span></div>
+      <div class="sa-row" id="saRowRef" style="display:none"><span class="sa-label">Re.F (Rechnung)</span><span class="sa-val sa-minus" id="saRef">—</span></div>
+      <div class="sa-row" id="saRowGsVw" style="display:none"><span class="sa-label">GS-VW</span><span class="sa-val sa-minus" id="saGsVw">—</span></div>
+      <div class="sa-row" id="saRowFna" style="display:none"><span class="sa-label">FN-App</span><span class="sa-val sa-minus" id="saFna">—</span></div>
+      <div class="sa-row" id="saRowFnaFp" style="display:none"><span class="sa-label">FN-App FP</span><span class="sa-val sa-minus" id="saFnaFp">—</span></div>
+      <div class="sa-row" id="saRowFnaTip" style="display:none"><span class="sa-label">Trinkgeld (FN)</span><span class="sa-val sa-minus" id="saFnaTip">—</span></div>
+    </div>
+    <div class="sa-block" id="saKommBlock" style="display:none">
+      <div class="sa-row"><span class="sa-label">Kommission (50%)</span><span class="sa-val sa-plus" id="saKomm">—</span></div>
+    </div>
+    <div class="sa-block">
+      <div class="sa-row"><span class="sa-label">Nettoarbeitszeit <span style="color:var(--text-muted);font-size:0.65rem">(Anteil ÷ 14)</span></span><span class="sa-val" style="color:var(--blue)" id="saStunden">—</span></div>
+    </div>
+    <div class="sa-netto-bar" id="saNettBar">
+      <div><div class="sa-netto-label" id="saNettLabel">—</div><div class="sa-netto-sub" id="saNettSub"></div></div>
+      <div class="sa-netto-val" id="saNetto">—</div>
+    </div>
+      </div>
+  <div id="exportTagWrap" style="display:none;margin-top:10px">
+    <button class="btn-import" style="border-color:var(--accent);color:var(--accent)" onclick="exportSchichtTag()">☁️ Diese Schicht ins Google Sheet exportieren</button>
+    <div id="cloudStatusTag" style="margin-top:6px;font-size:12px;color:var(--muted);text-align:center"></div>
+  </div>
+</div>
+
+<!-- ═══════════ ÜBERSICHT ═══════════ -->
+<div id="panel-uebersicht" class="panel">
+  <div id="uebContent"></div>
+</div>
+
+<!-- ═══════════ EINSTELLUNGEN ═══════════ -->
+<div id="panel-einstellungen" class="panel">
+  <!-- Profil -->
+  <div class="card">
+    <div class="card-title">👤 Fahrerprofil</div>
+    <div class="sett-section">
+      <div class="sett-field"><label>Name</label><input type="text" id="sName" placeholder="Hakam Daghestani"></div>
+      <div class="sett-field"><label>Fahrernummer</label><input type="text" id="sFahrerNr" inputmode="numeric" placeholder="3010"></div>
+      <div class="sett-field"><label>Wagennummer</label><input type="text" id="sWagenNr" inputmode="numeric" placeholder="12"></div>
+    </div>
+    <!-- KTS Tarif -->
+    <div class="card-title" style="margin-top:4px">🚕 KTS Tarif</div>
+    <div class="sett-field"><label>Grundpreis (erste 4 km)</label>
+      <div class="field-row"><input type="text" id="sKtsGrund" inputmode="numeric" oninput="onMoney(this)" placeholder="0"><button class="btn-00" onclick="add00('sKtsGrund')">00</button></div>
+    </div>
+    <div class="sett-field"><label>Preis pro km danach</label>
+      <div class="field-row"><input type="text" id="sKtsKm" inputmode="numeric" oninput="onMoney(this)" placeholder="0"><button class="btn-00" onclick="add00('sKtsKm')">00</button></div>
+    </div>
+    <button class="btn-save" onclick="saveSettings()">💾 Speichern</button>
+  </div>
+
+  <!-- Google Sheet -->
+  <div class="card">
+    <div class="card-title">☁️ Google Sheet</div>
+    <div class="sett-field"><label>Apps Script URL</label><input type="text" id="sApiUrl" placeholder="https://script.google.com/..."></div>
+    <div class="sett-field"><label>Fahrer-ID</label><input type="text" id="sFahrerId" inputmode="numeric" placeholder="3010"></div>
+    <div class="sett-field"><label>Chef-Sheet-ID</label><input type="text" id="sChefId" placeholder="Standard wird verwendet"></div>
+    <button class="btn-import" style="border-color:var(--accent);color:var(--accent)" onclick="exportAlleSchichten()">↑ Export: alle Schichten ins Google Sheet</button>
+    <button class="btn-import" onclick="importSheet()">↓ Import: alle Fahrten aus Google Sheet laden</button>
+    <div id="cloudStatus" style="margin-top:8px;font-size:12px;color:var(--muted);text-align:center"></div>
+  </div>
+
+  <!-- Export -->
+  <div class="card">
+    <div class="card-title">📥 Export</div>
+    <div class="export-btns">
+      <button class="btn-export" onclick="exportCSV()">↓ Schicht als CSV</button>
+      <button class="btn-export" onclick="exportAllCSV()">↓ Alle Fahrten als CSV</button>
+    </div>
+  </div>
+</div>
+
+<!-- Toast -->
+<div class="toast" id="toast"></div>
+
+<!-- Hidden -->
+<input type="hidden" id="dienstBeginn">
+<input type="hidden" id="dienstEnde">
+
+<script>
+// ═══════════════════════════════════════════════
+// KONSTANTEN
+// ═══════════════════════════════════════════════
+const KEYS = { FAHRTEN:'tx_fahrten', DRIVER:'tx_driver', API_URL:'tx_api', FAHRER_ID:'tx_fid', KTS_GRUND:'tx_kts_g', KTS_KM:'tx_kts_k', CHEF_ID:'tx_chef' };
+const CHEF_ID_FEST = '1AglogEKdpO8YLp1FxdMBetZcLE5WjmbUT5s8mK2ia9E';
+const MN = {'01':'Jan','02':'Feb','03':'Mrz','04':'Apr','05':'Mai','06':'Jun','07':'Jul','08':'Aug','09':'Sep','10':'Okt','11':'Nov','12':'Dez'};
+let fahrten = [], fahrerId = '3010', ustPct = 7, _editId = null, _editNr = null;
+
+
+function lsGet(k) { return ls.get(k); }
+function getDriverProfile() {
+  const d = JSON.parse(ls.get(KEYS.DRIVER) || '{}');
+  return { name: d.name||'', driverNr: d.driverNr||d.fahrerNr||'', wagenNr: d.wagenNr||'' };
+}
+function displayZahlart(z) {
+  return z === 'FN-A' ? 'FN-App' : z === 'FN-B' ? 'FN-Bar' : z === 'FN-A FP' ? 'FN-App FP' : z;
+}
+// ═══════════════════════════════════════════════
+// STORAGE
+// ═══════════════════════════════════════════════
+const ls = { get:(k)=>{ try{return localStorage.getItem(k)}catch{return null} }, set:(k,v)=>{ try{localStorage.setItem(k,v)}catch{} } };
+
+// ═══════════════════════════════════════════════
+// GELD-EINGABE (Cent)
+// ═══════════════════════════════════════════════
+function onMoney(el) {
+  let raw = el.value.replace(/\D/g,'');
+  if (!raw || raw === '0') { el.value=''; el.dataset.cents='0'; calc(); return; }
+  raw = raw.replace(/^0+/,'') || '0';
+  if (raw.length > 6) raw = raw.slice(-6);
+  const n = parseInt(raw);
+  el.value = Math.floor(n/100) + ',' + String(n%100).padStart(2,'0');
+  el.dataset.cents = raw;
+  calc();
+}
+function getMoney(id) {
+  const el = document.getElementById(id);
+  if (!el || !el.value) return 0;
+  if (el.dataset.cents) return parseInt(el.dataset.cents||'0')/100;
+  return parseFloat(el.value.replace(',','.'))||0;
+}
+function setMoney(id, val) {
+  const el = document.getElementById(id); if (!el) return;
+  if (!val) { el.value=''; el.dataset.cents='0'; return; }
+  const c = Math.round(val*100);
+  el.value = Math.floor(c/100)+','+String(c%100).padStart(2,'0');
+  el.dataset.cents = String(c);
+}
+function clearMoney(id) { const el=document.getElementById(id); if(el){el.value='';el.dataset.cents='0';} }
+function add00(id) {
+  const el = document.getElementById(id); if (!el) return;
+  const raw = (el.dataset.cents||'0').replace(/\D/g,'') || '0';
+  const n = parseInt(raw === '0' ? '0' : raw+'00');
+  const c = Math.round(n);
+  el.value = Math.floor(c/100)+','+String(c%100).padStart(2,'0');
+  el.dataset.cents = String(c);
+  calc();
+}
+
+// ═══════════════════════════════════════════════
+// KTS TARIF
+// ═══════════════════════════════════════════════
+function getKts() {
+  return { grund: parseFloat(ls.get(KEYS.KTS_GRUND)||'0'), km: parseFloat(ls.get(KEYS.KTS_KM)||'0') };
+}
+function calcKtsTaxa(km) {
+  const t = getKts();
+  const g = t.grund || 17.90, k = t.km || 2.38;
+  return Math.round((km<=4 ? g : g+(km-4)*k)*100)/100;
+}
+function onKtsKmChange() {
+  const km = parseFloat(document.getElementById('ktsKm').value)||0;
+  if (!km) { document.getElementById('ktsInfo').textContent='— km eingeben'; clearMoney('taxa'); return; }
+  const betrag = calcKtsTaxa(km);
+  setMoney('taxa', betrag);
+  document.getElementById('ktsInfo').textContent = km+'km → '+fmt(betrag);
+  const isZZ = document.getElementById('zahlart').value === 'KTS-ZZ';
+  if (isZZ) {
+    const zz = Math.round(Math.max(0, betrag-17.90)*100)/100;
+    document.getElementById('ktsZZ').value = fmt(zz);
+    document.getElementById('ktsZZ').dataset.cents = String(Math.round(zz*100));
+  }
+  calc();
+}
+
+// ═══════════════════════════════════════════════
+// ZAHLART
+// ═══════════════════════════════════════════════
+function setZahlart(v) {
+  // Mappe Anzeige-Namen auf echte Werte
+  const map = {'FN-A':'FN-A','FN-B':'FN-B','FN-A FP':'FN-A FP'};
+  document.getElementById('zahlart').value = v;
+  onZahlartChange();
+}
+function onZahlartChange() {
+  const z = document.getElementById('zahlart').value;
+  const kts = z==='KTS'||z==='KTS-ZZ';
+  document.getElementById('ktsBlock').style.display = kts?'block':'none';
+  document.getElementById('stdBlock').style.display  = kts?'none':'block';
+  document.getElementById('ktsZZField').style.display = z==='KTS-ZZ'?'flex':'none';
+  document.getElementById('rechnungBox').classList.toggle('visible', z==='Re.F');
+  document.getElementById('taxaLbl').textContent = kts?'Betrag (auto)':'Taxameter';
+  // Quick-Btn Highlight
+  ['Bar','KK','FN-A'].forEach(v => {
+    const el = document.getElementById('q'+v.replace('-','').replace(' ',''));
+    if (el) el.classList.toggle('active', z===v);
+  });
+  // Spezifische Quick-Buttons
+  document.getElementById('qBar')?.classList.toggle('active', z==='Bar');
+  document.getElementById('qKK')?.classList.toggle('active', z==='KK');
+  document.getElementById('qFNA')?.classList.toggle('active', z==='FN-A');
+  calc();
+}
+
+// ═══════════════════════════════════════════════
+// UST
+// ═══════════════════════════════════════════════
+function setUSt(p) {
+  ustPct = p;
+  document.getElementById('ust7').classList.toggle('active', p===7);
+  document.getElementById('ust19').classList.toggle('active', p===19);
+  calc();
+}
+
+// ═══════════════════════════════════════════════
+// KALKULATION
+// ═══════════════════════════════════════════════
+function calcFahrt(taxa, bezahlt, komm) {
+  const bez = bezahlt>0 ? bezahlt : taxa;
+  const tip    = Math.max(0, Math.round((bez-taxa)*100)/100);
+  const anteil = Math.round((taxa*0.45-0.5*komm)*10)/10;
+  return { tip, anteil, gesamt:Math.round((anteil+tip)*100)/100 };
+}
+function calc() {
+  const z = document.getElementById('zahlart').value;
+  const kts = z==='KTS'||z==='KTS-ZZ';
+  const taxa = getMoney('taxa');
+  if (!taxa) { ['pvTip','pvAnteil','pvGesamt'].forEach(id=>{ document.getElementById(id).textContent='—'; }); return; }
+  let tip, anteil, gesamt;
+  if (kts) {
+    const ktsTip = getMoney('ktsTip');
+    anteil = Math.round(taxa*0.45*10)/10;
+    tip    = ktsTip;
+    gesamt = Math.round((anteil+tip)*100)/100;
+  } else {
+    const bezahlt = getMoney('bezahlt');
+    const komm    = getMoney('komm');
+    const manTip  = getMoney('tip');
+    const r = calcFahrt(taxa, bezahlt, komm);
+    tip    = manTip>0 ? manTip : r.tip;
+    anteil = r.anteil;
+    gesamt = Math.round((anteil+tip)*100)/100;
+  }
+  document.getElementById('pvTip').textContent    = tip>0 ? fmt(tip) : '—';
+  document.getElementById('pvAnteil').textContent = fmt(anteil);
+  document.getElementById('pvGesamt').textContent = fmt(gesamt);
+}
+
+// ═══════════════════════════════════════════════
+// FAHRT SPEICHERN
+// ═══════════════════════════════════════════════
+function saveFahrt() {
+  const z    = document.getElementById('zahlart').value;
+  const taxa = getMoney('taxa');
+  if (!taxa) { toast('⚠️ Taxameter eingeben'); return; }
+  const datum = document.getElementById('dateInput').value;
+  const kts = z==='KTS'||z==='KTS-ZZ';
+  const tagF = fahrten.filter(f=>f.datum===datum);
+  const nr = _editNr !== null ? _editNr : tagF.length+1;
+
+  let fahrt;
+  if (kts) {
+    const km     = parseFloat(document.getElementById('ktsKm').value)||0;
+    const zz     = getMoney('ktsZZ');
+    const ktsTip = getMoney('ktsTip');
+    const anteil = Math.round(taxa*0.45*10)/10;
+    fahrt = { id:_editId||Date.now(), datum, nr, taxa, zahlart:z, bezahlt:taxa, rueckgeld:0, tip:ktsTip, anteil, gesamt:Math.round((anteil+ktsTip)*100)/100, komm:0, km, zz, ust:ustPct, ustBetrag:calcUSt(taxa), rechnungNr:'' };
+  } else {
+    const bezahltRaw = getMoney('bezahlt');
+    const bezahlt    = bezahltRaw>0 ? bezahltRaw : taxa;
+    const komm       = getMoney('komm');
+    const manTip     = getMoney('tip');
+    const r = calcFahrt(taxa, bezahlt, komm);
+    const tip = manTip>0 ? manTip : r.tip;
+    const rechnungNr = document.getElementById('rechnungNr').value;
+    fahrt = { id:_editId||Date.now(), datum, nr, taxa, zahlart:z, bezahlt, rueckgeld:0, tip, anteil:r.anteil, gesamt:Math.round((r.anteil+tip)*100)/100, komm, km:0, zz:0, ust:ustPct, ustBetrag:calcUSt(taxa), rechnungNr };
+  }
+
+  if (_editId) {
+    fahrten = fahrten.filter(f=>String(f.id)!==String(_editId));
+    _editId = null; _editNr = null;
+    document.getElementById('addBtn').textContent = '+ Fahrt hinzufügen';
+    document.getElementById('addBtn').classList.remove('edit');
+  }
+  fahrten.push(fahrt);
+  fahrten.sort((a,b)=>a.datum<b.datum?-1:a.datum>b.datum?1:a.nr-b.nr);
+  save();
+  clearForm();
+  render();
+  toast('✓ Fahrt gespeichert');
+}
+
+function calcUSt(taxa) { return Math.round(taxa/(1+ustPct/100)*(ustPct/100)*100)/100; }
+
+function editFahrt(id) {
+  const f = fahrten.find(x=>String(x.id)===String(id)); if (!f) return;
+  _editId = String(id); _editNr = f.nr;
+  document.getElementById('zahlart').value = f.zahlart;
+  onZahlartChange();
+  setMoney('taxa', f.taxa);
+  if (f.zahlart==='KTS'||f.zahlart==='KTS-ZZ') {
+    document.getElementById('ktsKm').value = f.km||'';
+    setMoney('ktsTip', f.tip);
+  } else {
+    setMoney('bezahlt', f.bezahlt);
+    setMoney('komm', f.komm);
+    if (f.tip>0) setMoney('tip', f.tip);
+  }
+  if (f.rechnungNr) document.getElementById('rechnungNr').value = f.rechnungNr;
+  setUSt(f.ust||7);
+  document.getElementById('addBtn').textContent = '💾 Fahrt aktualisieren';
+  document.getElementById('addBtn').classList.add('edit');
+  calc();
+  window.scrollTo(0,0);
+  toast('✏️ Zum Bearbeiten geladen');
+}
+
+function deleteFahrt(id) {
+  fahrten = fahrten.filter(f=>String(f.id)!==String(id));
+  save(); render(); toast('🗑 Gelöscht');
+}
+
+function clearForm() {
+  _editId=null; _editNr=null;
+  document.getElementById('addBtn').textContent='+ Fahrt hinzufügen';
+  document.getElementById('addBtn').classList.remove('edit');
+  ['taxa','bezahlt','tip','komm','ktsTip'].forEach(clearMoney);
+  ['ktsKm','rechnungNr'].forEach(id=>{ const el=document.getElementById(id); if(el) el.value=''; });
+  document.getElementById('rechnungBox').classList.remove('visible');
+  document.getElementById('zahlart').value='Bar';
+  onZahlartChange();
+  setUSt(7);
+}
+
+// ═══════════════════════════════════════════════
+// RENDER
+// ═══════════════════════════════════════════════
+function render() {
+  const datum = document.getElementById('dateInput').value;
+  const tf = fahrten.filter(f=>f.datum===datum);
+  document.getElementById('exportTagWrap').style.display = tf.length ? 'block' : 'none';
+  const [y,m,d] = datum.split('-');
+  document.getElementById('datumBadge').textContent = new Date(datum+'T12:00').toLocaleDateString('de-DE',{weekday:'short',day:'2-digit',month:'2-digit'});
+  document.getElementById('statLabelNetto').textContent = d+'.'+m+' Netto';
+  document.getElementById('statLabelTip').textContent = d+'.'+m+' Tip';
+  document.getElementById('statLabelMonat').textContent = (MN[m]||m)+' Netto';
+
+  // Stats
+  const tagNetto  = tf.reduce((s,f)=>s+(f.anteil||0),0);
+  const tagTip    = tf.reduce((s,f)=>s+(f.tip||0),0);
+  const monat     = datum.slice(0,7);
+  let monatNetto  = fahrten.filter(f=>f.datum.startsWith(monat)).reduce((s,f)=>s+(f.anteil||0),0);
+  if (monatNetto===0) {
+    const lm = [...new Set(fahrten.map(f=>f.datum.slice(0,7)))].sort().pop();
+    if (lm) monatNetto = fahrten.filter(f=>f.datum.startsWith(lm)).reduce((s,f)=>s+(f.anteil||0),0);
+  }
+  document.getElementById('statHeuteNetto').textContent  = tagNetto>0  ? fmt(tagNetto)  : '—';
+  document.getElementById('statHeuteTip').textContent    = tagTip>0    ? fmt(tagTip)    : '—';
+  document.getElementById('statMonatNetto').textContent  = monatNetto>0? fmt(monatNetto): '—';
+
+  // Fahrtliste
+  const liste = document.getElementById('fahrtListe');
+  if (!tf.length) {
+    liste.innerHTML = '<div class="empty"><div class="icon">🚕</div>Noch keine Fahrten</div>';
+    document.getElementById('schichtAbrSection').style.display='none';
+    return;
+  }
+
+  const tagClass = z => {
+    if (z==='Bar'||z==='FN-B') return 'tag-bar';
+    if (z==='KK') return 'tag-kk';
+    if (z.startsWith('FN')) return 'tag-fn';
+    if (z.startsWith('KTS')) return 'tag-kts';
+    if (z==='Re.F') return 'tag-ref';
+    return '';
+  };
+
+  liste.innerHTML = tf.sort((a,b)=>a.nr-b.nr).map(f=>`
+    <div class="fahrt" onclick="editFahrt('${f.id}')">
+      <span class="fahrt-nr">#${f.nr}</span>
+      <span class="fahrt-taxa">${fmt(f.taxa)}</span>
+      <span class="fahrt-tag ${tagClass(f.zahlart)}">${displayZahlart(f.zahlart)}</span>
+      ${f.tip>0?`<span class="fahrt-tip">+${fmt(f.tip)}</span>`:''}
+      <span class="fahrt-anteil">${fmt(f.anteil)}</span>
+      <button onclick="event.stopPropagation();deleteFahrt('${f.id}')" style="background:none;border:none;color:var(--muted);font-size:16px;cursor:pointer;padding:4px">✕</button>
+    </div>`).join('');
+
+  // Schichtabrechnung
+  renderSchichtAbrechnung(tf);
+}
+
+function renderSchichtAbrechnung(tf) {
+  document.getElementById('schichtAbrSection').style.display = 'block';
+  const gesamtumsatz = tf.reduce((s,f)=>s+f.taxa,0);
+  const anteil55     = gesamtumsatz*0.55;
+  const byZ = {};
+  tf.forEach(f=>{ if(!byZ[f.zahlart]) byZ[f.zahlart]={taxa:0,tip:0,zz:0,bezahlt:0};
+    byZ[f.zahlart].taxa+=f.taxa; byZ[f.zahlart].tip+=f.tip; byZ[f.zahlart].zz+=f.zz; byZ[f.zahlart].bezahlt+=f.bezahlt; });
+  const g   = k=>byZ[k]?.taxa||0;
+  const kk  = tf.filter(f=>f.zahlart==='KK').reduce((s,f)=>s+f.bezahlt,0);
+  const db  = g('DB-Gutschein'), kts=g('KTS');
+  const ktszz = g('KTS-ZZ')-tf.filter(f=>f.zahlart==='KTS-ZZ').reduce((s,f)=>s+f.zz,0);
+  const ref=g('Re.F'), gsvw=g('GS-VW'), fna=g('FN-A'), fnafp=g('FN-A FP');
+  const fnaTip=(byZ['FN-A']?.tip||0)+(byZ['FN-A FP']?.tip||0);
+  const komm50=tf.reduce((s,f)=>s+f.komm,0)*0.5;
+  const nichtBar=kk+db+kts+ktszz+ref+gsvw+fna+fnafp+fnaTip;
+  const netto=Math.round(anteil55-nichtBar+komm50);
+  const stunden=tf.reduce((s,f)=>s+f.anteil,0)/14;
+
+  const drv = getDriverProfile();
+  const fb  = document.getElementById('saFahrerBlock');
+  if (drv.name||drv.driverNr||drv.wagenNr) {
+    fb.style.display='block';
+    document.getElementById('saFahrerName').textContent = drv.name||'—';
+    document.getElementById('saFahrerNrWg').textContent =
+      [drv.driverNr?'Nr. '+drv.driverNr:'', drv.wagenNr?'Wg. '+drv.wagenNr:''].filter(Boolean).join(' · ')||'—';
+  } else fb.style.display='none';
+
+  document.getElementById('saUmsatz').textContent   = fmt(gesamtumsatz);
+  document.getElementById('saAnteil55').textContent = fmt(anteil55);
+  document.getElementById('saStunden').textContent  = stunden.toFixed(4).replace('.',',') + ' h';
+
+  const rows=[['saRowKK','saKK',kk],['saRowDB','saDB',db],['saRowKTS','saKTS',kts],
+    ['saRowKTSZZ','saKTSZZ',ktszz],['saRowRef','saRef',ref],['saRowGsVw','saGsVw',gsvw],
+    ['saRowFna','saFna',fna],['saRowFnaFp','saFnaFp',fnafp],['saRowFnaTip','saFnaTip',fnaTip]];
+  rows.forEach(([rid,vid,val])=>{
+    document.getElementById(rid).style.display=val>0?'flex':'none';
+    if(val>0) document.getElementById(vid).textContent='− '+fmt(val);
+  });
+  const kb=document.getElementById('saKommBlock'); kb.style.display=komm50>0?'block':'none';
+  if(komm50>0) document.getElementById('saKomm').textContent='+ '+fmt(komm50);
+
+  const bar=document.getElementById('saNettBar');
+  bar.className='sa-netto-bar '+(netto>0?'pay-unternehmer':netto<0?'pay-fahrer':'pay-zero');
+  // Schichtzeiten aus den Eingabefeldern lesen
+  const sBeginn = document.getElementById('dienstBeginn').value
+    || lsGet('taxi_schicht_beginn') || '';
+  const sEnde   = document.getElementById('dienstEnde').value
+    || lsGet('taxi_schicht_ende') || '';
+  const saBI = document.getElementById('saSchichtBeginn');
+  const saEI = document.getElementById('saSchichtEnde');
+  if (saBI) saBI.textContent = sBeginn || '—';
+  if (saEI) saEI.textContent = sEnde   || '—';
+  // Gesamtzeit
+  const saGZ = document.getElementById('saGesamtzeit');
+  if (saGZ && sBeginn && sEnde) {
+    const [bh,bm] = sBeginn.split(':').map(Number);
+    const [eh,em] = sEnde.split(':').map(Number);
+    let minGes = (eh*60+em) - (bh*60+bm);
+    if (minGes < 0) minGes += 1440;
+    const hDez = Math.round(minGes/6)/10;
+    saGZ.textContent = Math.floor(minGes/60) + 'h ' + String(minGes%60).padStart(2,'0') + 'min (' + hDez + ' h)';
+  } else if (saGZ) { saGZ.textContent = '—'; }
+
+  if(netto>0)      { document.getElementById('saNettLabel').textContent='💸 Du zahlst dem Unternehmer'; document.getElementById('saNettSub').textContent='Barzahlung beim Schichtende'; document.getElementById('saNetto').textContent=fmt(netto); }
+  else if(netto<0) { document.getElementById('saNettLabel').textContent='✅ Unternehmer zahlt dir'; document.getElementById('saNettSub').textContent='Mehr Karte/Funk als Anteil'; document.getElementById('saNetto').textContent=fmt(Math.abs(netto)); }
+  else             { document.getElementById('saNettLabel').textContent='✓ Quitt'; document.getElementById('saNettSub').textContent=''; document.getElementById('saNetto').textContent='0,00 €'; }
+
+  // ── Statistik-Kacheln befüllen ──
+  const sumAnteil  = tf.reduce((s,f) => s + (f.anteil||0), 0);
+  const sumTip     = tf.reduce((s,f) => s + (f.tip||0),    0);
+  const fmtE       = n => n.toFixed(2).replace('.',',') + ' €';
+  const datumStat  = document.getElementById('dateInput') ? document.getElementById('dateInput').value : '';
+  const monatStat  = datumStat ? datumStat.slice(0,7) : '';
+  const alleFahrten = typeof fahrten !== 'undefined' ? fahrten : [];
+  let monatNetto  = monatStat
+    ? alleFahrten.filter(f => f.datum && f.datum.startsWith(monatStat))
+        .reduce((s,f) => s + (f.anteil||0), 0)
+    : 0;
+  // Falls keine Fahrten im gewählten Monat → letzten Monat nehmen
+  if (monatNetto === 0 && alleFahrten.length > 0) {
+    const letzterM = alleFahrten.map(f=>f.datum.slice(0,7))
+      .filter((v,i,a)=>a.indexOf(v)===i).sort().pop();
+    if (letzterM && letzterM !== monatStat) {
+      monatNetto = alleFahrten.filter(f=>f.datum.startsWith(letzterM))
+        .reduce((s,f)=>s+(f.anteil||0),0);
+      const [ly,lm2] = letzterM.split('-');
+      const MN4={'01':'Jan','02':'Feb','03':'Mär','04':'Apr','05':'Mai','06':'Jun',
+                 '07':'Jul','08':'Aug','09':'Sep','10':'Okt','11':'Nov','12':'Dez'};
+      const lM3 = document.getElementById('statLabelMonat');
+      if (lM3) lM3.textContent = (MN4[lm2]||lm2) + ' Netto';
+    }
+  }
+  const el1 = document.getElementById('statHeuteNetto');
+  const el2 = document.getElementById('statHeuteTip');
+  const el3 = document.getElementById('statMonatNetto');
+  if (el1) el1.textContent = sumAnteil  > 0 ? fmtE(sumAnteil)  : (tf.length ? '0,00 €' : '—');
+  if (el2) el2.textContent = sumTip     > 0 ? fmtE(sumTip)     : (tf.length ? '0,00 €' : '—');
+  if (el3) el3.textContent = monatNetto > 0 ? fmtE(monatNetto)  : '—';
+}
+
+// ═══════════════════════════════════════════════
+// ÜBERSICHT
+// ═══════════════════════════════════════════════
+function renderUebersicht() {
+  const byMonth = {}, byDate = {};
+  fahrten.forEach(f=>{
+    const m=f.datum.slice(0,7), d=f.datum;
+    if(!byMonth[m]) byMonth[m]={n:0,umsatz:0,anteil:0,tip:0,gesamt:0};
+    if(!byDate[d])  byDate[d]= {n:0,umsatz:0,anteil:0,tip:0,gesamt:0,datum:d};
+    [byMonth[m],byDate[d]].forEach(o=>{o.n++;o.umsatz+=f.taxa;o.anteil+=f.anteil||0;o.tip+=f.tip||0;o.gesamt+=f.gesamt||0;});
+  });
+
+  const months = Object.keys(byMonth).sort().reverse();
+  const dates  = Object.keys(byDate).sort().reverse();
+
+  const monthCards = months.map(m=>{
+    const a=byMonth[m]; const [y,mo]=m.split('-');
+    return `<div class="month-card">
+      <div class="month-name">${MN[mo]||mo} ${y}</div>
+      <div class="mc-row"><span>Fahrten</span><span>${a.n}</span></div>
+      <div class="mc-row"><span>Umsatz</span><span>${fmt(a.umsatz)}</span></div>
+      <div class="mc-row"><span>Trinkgeld</span><span>${fmt(a.tip)}</span></div>
+      <div class="mc-row hl"><span>Verdienst</span><span>${fmt(a.gesamt)}</span></div>
+    </div>`;
+  }).join('');
+
+  const dateRows = dates.map(d=>{
+    const a=byDate[d];
+    const df=fahrten.filter(f=>f.datum===d);
+    const g2=z=>df.filter(f=>f.zahlart===z).reduce((s,f)=>s+f.taxa,0);
+    const kk2=df.filter(f=>f.zahlart==='KK').reduce((s,f)=>s+(f.bezahlt||f.taxa),0);
+    const ktszz2=g2('KTS-ZZ')-df.filter(f=>f.zahlart==='KTS-ZZ').reduce((s,f)=>s+(f.zz||0),0);
+    const fnTip2=df.filter(f=>f.zahlart==='FN-A'||f.zahlart==='FN-A FP').reduce((s,f)=>s+(f.tip||0),0);
+    const nb=kk2+g2('DB-Gutschein')+g2('KTS')+ktszz2+g2('Re.F')+g2('GS-VW')+g2('FN-A')+g2('FN-A FP')+fnTip2;
+    const k50=df.reduce((s,f)=>s+(f.komm||0),0)*0.5;
+    const kasse=Math.round(a.umsatz*0.55-nb+k50);
+    const lbl=new Date(d+'T12:00').toLocaleDateString('de-DE',{day:'2-digit',month:'2-digit'});
+    return `<tr><td>${lbl}</td><td>${a.n}</td><td>${fmt(a.umsatz)}</td><td>${fmt(a.tip)}</td><td class="green">${fmt(a.anteil)}</td><td class="${kasse>0?'red':'green'}">${kasse>0?'+':''}${fmt(Math.abs(kasse))}</td></tr>`;
+  }).join('');
+
+  document.getElementById('uebContent').innerHTML=`
+    <div class="month-grid">${monthCards}</div>
+    <div class="card">
+      <div class="card-title">Schichten</div>
+      <table class="ov-table">
+        <thead><tr><th>Datum</th><th>F</th><th>Umsatz</th><th>Tip</th><th>Netto</th><th>Kasse</th></tr></thead>
+        <tbody>${dateRows}</tbody>
+      </table>
+    </div>`;
+}
+
+// ═══════════════════════════════════════════════
+// DATUM
+// ═══════════════════════════════════════════════
+function onDateChange() { render(); }
+
+// ═══════════════════════════════════════════════
+// TABS
+// ═══════════════════════════════════════════════
+function showTab(tab) {
+  document.querySelectorAll('.tab').forEach((b,i)=>b.classList.toggle('active',['schicht','uebersicht','einstellungen'][i]===tab));
+  document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'));
+  document.getElementById('panel-'+tab).classList.add('active');
+  if (tab==='uebersicht') renderUebersicht();
+  if (tab==='einstellungen') loadSettingsUI();
+}
+
+// ═══════════════════════════════════════════════
+// EINSTELLUNGEN
+// ═══════════════════════════════════════════════
+function saveSettings() {
+  const name     = document.getElementById('sName').value.trim();
+  const fahrerNr = document.getElementById('sFahrerNr').value.trim();
+  const wagenNr  = document.getElementById('sWagenNr').value.trim();
+  ls.set(KEYS.DRIVER, JSON.stringify({name,fahrerNr,wagenNr}));
+  if (fahrerNr) { fahrerId=fahrerNr; ls.set(KEYS.FAHRER_ID, fahrerNr); }
+  const grund  = getMoney('sKtsGrund');
+  const kmPreis= getMoney('sKtsKm');
+  if (grund>0)   ls.set(KEYS.KTS_GRUND, grund);
+  if (kmPreis>0) ls.set(KEYS.KTS_KM,    kmPreis);
+  const apiUrl = document.getElementById('sApiUrl').value.trim();
+  const fid    = document.getElementById('sFahrerId').value.trim();
+  if (apiUrl) ls.set(KEYS.API_URL, apiUrl);
+  if (fid)    { fahrerId=fid; ls.set(KEYS.FAHRER_ID, fid); }
+  const chef = document.getElementById('sChefId').value.trim();
+  if (chef) ls.set(KEYS.CHEF_ID, chef);
+  toast('✓ Einstellungen gespeichert');
+}
+function loadSettingsUI() {
+  const d = JSON.parse(ls.get(KEYS.DRIVER)||'{}');
+  document.getElementById('sName').value     = d.name     ||'';
+  document.getElementById('sFahrerNr').value = d.fahrerNr ||fahrerId||'';
+  document.getElementById('sWagenNr').value  = d.wagenNr  ||'';
+  const t = getKts();
+  setMoney('sKtsGrund', t.grund);
+  setMoney('sKtsKm',    t.km);
+  document.getElementById('sApiUrl').value   = ls.get(KEYS.API_URL)||'';
+  document.getElementById('sFahrerId').value = ls.get(KEYS.FAHRER_ID)||fahrerId||'';
+  document.getElementById('sChefId').value   = ls.get(KEYS.CHEF_ID)||'';
+}
+
+// ═══════════════════════════════════════════════
+// IMPORT
+// ═══════════════════════════════════════════════
+async function importSheet() {
+  const { url } = cloudCfg();
+  if (!url) { toast('⚠️ API-URL eingeben'); return; }
+  setCloudStatus('⏳ Lade...');
+  try {
+    const r = await apiCall(url, 'getFahrten', {});
+    if (!r.ok) throw new Error(r.error||'Fehler');
+    const imported = (r.fahrten||[]).map(f=>{
+      if (!Array.isArray(f)) return f;
+      return {id:String(f[0]),datum:String(f[2]).slice(0,10),nr:Number(f[3]),taxa:Number(f[4]),zahlart:String(f[5]||'Bar'),bezahlt:Number(f[6]||0),rueckgeld:Number(f[7]||0),tip:Number(f[8]||0),anteil:Number(f[9]||0),gesamt:Number(f[10]||0),komm:Number(f[11]||0),km:Number(f[12]||0),zz:Number(f[13]||0),ust:parseInt(f[16])||7,rechnungNr:String(f[18]||'')};
+    });
+    const exist = new Set(fahrten.map(f=>String(f.id)));
+    const neu   = imported.filter(f=>!exist.has(String(f.id)));
+    fahrten = [...fahrten,...neu].sort((a,b)=>a.datum<b.datum?-1:a.datum>b.datum?1:a.nr-b.nr);
+    save(); render();
+    setCloudStatus('✓ ' + neu.length + ' neue Fahrten (' + fahrten.length + ' gesamt)');
+    toast('✓ '+neu.length+' Fahrten importiert');
+  } catch(e) { setCloudStatus('❌ '+e.message); toast('❌ '+e.message); }
+}
+
+// ═══════════════════════════════════════════════
+// GOOGLE SHEET (Apps Script)
+// ═══════════════════════════════════════════════
+async function apiCall(url, action, data={}) {
+  const chefId = ls.get(KEYS.CHEF_ID) || CHEF_ID_FEST;
+  // chefId + fahrerId als URL-Parameter: überleben den 302-Redirect (Body geht dabei verloren)
+  const params = new URLSearchParams({ action, fahrerId, chefId });
+  const body   = JSON.stringify({ action, fahrerId, chefId, ...data });
+  const res    = await fetch(url + '?' + params, {
+    method:'POST', headers:{'Content-Type':'text/plain;charset=utf-8'}, body, redirect:'follow' });
+  const text = await res.text();
+  try { return JSON.parse(text); }
+  catch(e) { throw new Error('Ungültige Antwort: ' + text.slice(0,200)); }
+}
+// Verbindungsdaten: Eingabefelder (falls ausgefüllt) sonst gespeicherte Werte; wird gleich gespeichert
+function cloudCfg() {
+  const v = id => { const el = document.getElementById(id); return el ? el.value.trim() : ''; };
+  const url = v('sApiUrl') || ls.get(KEYS.API_URL) || '';
+  const fid = v('sFahrerId') || ls.get(KEYS.FAHRER_ID) || fahrerId;
+  const chef = v('sChefId');
+  if (url) ls.set(KEYS.API_URL, url);
+  if (fid) { ls.set(KEYS.FAHRER_ID, fid); fahrerId = fid; }
+  if (chef) ls.set(KEYS.CHEF_ID, chef);
+  return { url, fid };
+}
+function setCloudStatus(msg, tag) {
+  [tag ? 'cloudStatusTag' : 'cloudStatus'].forEach(id => { const el = document.getElementById(id); if (el) el.textContent = msg; });
+}
+// Name + Wagennummer ins Fahrer-Blatt, damit sie im Chef-Sheet erscheinen
+async function ensureProfile(url) {
+  const d = getDriverProfile();
+  await apiCall(url, 'saveFahrer', { profil: { name: d.name, fahrerNr: d.driverNr || fahrerId, wagenNr: d.wagenNr } }).catch(()=>{});
+}
+async function exportAlleSchichten() {
+  const { url } = cloudCfg();
+  if (!url) { toast('⚠️ Bitte Apps-Script-URL eintragen'); return; }
+  const tage = {};
+  for (const f of fahrten) (tage[f.datum] = tage[f.datum] || []).push(f);
+  const daten = Object.keys(tage).sort();
+  if (!daten.length) { toast('Keine Fahrten vorhanden'); return; }
+  setCloudStatus('⏳ Sende ' + daten.length + ' Schichten...');
+  try {
+    await ensureProfile(url);
+    const schichten = daten.map(datum => ({ datum, beginn:'', ende:'', fahrten: tage[datum] }));
+    const r = await apiCall(url, 'bulkSaveSchichten', { schichten });
+    if (!r.ok) throw new Error(r.error || 'Fehler');
+    setCloudStatus('✓ ' + r.schichten + ' Schichten, ' + r.fahrten + ' Fahrten übertragen');
+    toast('✓ ' + r.schichten + ' Schichten exportiert');
+  } catch(e) { setCloudStatus('❌ ' + e.message); toast('❌ ' + e.message); }
+}
+async function exportSchichtTag() {
+  const { url } = cloudCfg();
+  if (!url) { toast('⚠️ URL fehlt: unter Einstellungen eintragen'); showTab('einstellungen'); return; }
+  const datum = document.getElementById('dateInput').value;
+  const tf = fahrten.filter(f => f.datum === datum);
+  if (!tf.length) { toast('Keine Fahrten an diesem Tag'); return; }
+  setCloudStatus('⏳ Sende ' + datum + '...', true);
+  try {
+    await ensureProfile(url);
+    const r = await apiCall(url, 'saveSchicht', { datum, beginn:'', ende:'', fahrten: tf });
+    if (!r.ok) throw new Error(r.error || 'Fehler');
+    setCloudStatus('✓ ' + tf.length + ' Fahrten übertragen', true);
+    toast('✓ Schicht exportiert');
+  } catch(e) { setCloudStatus('❌ ' + e.message, true); toast('❌ ' + e.message); }
+}
+
+// ═══════════════════════════════════════════════
+// EXPORT
+// ═══════════════════════════════════════════════
+function fmt(n) { return (Math.round(n*100)/100).toFixed(2).replace('.',',')+' €'; }
+function fmtCsv(n) { return (Math.round(n*100)/100).toFixed(2).replace('.',','); }
+
+function exportCSV() {
+  const datum=document.getElementById('dateInput').value;
+  const tf=fahrten.filter(f=>f.datum===datum);
+  if (!tf.length) { toast('Keine Fahrten für diesen Tag'); return; }
+  const hdr='Nr;Datum;Taxameter;Zahlungsart;Bezahlt;Trinkgeld;Anteil;Verdienst;Kommission;km\n';
+  const rows=tf.map(f=>[f.nr,f.datum,fmtCsv(f.taxa),f.zahlart,fmtCsv(f.bezahlt),fmtCsv(f.tip),fmtCsv(f.anteil),fmtCsv(f.gesamt),fmtCsv(f.komm),f.km||0].join(';')).join('\n');
+  dl(hdr+rows, 'taxi_'+datum+'.csv');
+}
+function exportAllCSV() {
+  const hdr='Nr;Datum;Taxameter;Zahlungsart;Bezahlt;Trinkgeld;Anteil;Verdienst;Kommission;km\n';
+  const rows=fahrten.map(f=>[f.nr,f.datum,fmtCsv(f.taxa),f.zahlart,fmtCsv(f.bezahlt),fmtCsv(f.tip),fmtCsv(f.anteil),fmtCsv(f.gesamt),fmtCsv(f.komm),f.km||0].join(';')).join('\n');
+  dl(hdr+rows, 'taxi_alle.csv');
+}
+function dl(text, name) {
+  const a=document.createElement('a');
+  a.href='data:text/csv;charset=utf-8,\uFEFF'+encodeURIComponent(text);
+  a.download=name; a.click();
+}
+
+// ═══════════════════════════════════════════════
+// STORAGE
+// ═══════════════════════════════════════════════
+function save() { ls.set(KEYS.FAHRTEN, JSON.stringify(fahrten)); }
+
+// ═══════════════════════════════════════════════
+// TOAST
+// ═══════════════════════════════════════════════
+function toast(msg) {
+  const t=document.getElementById('toast');
+  t.textContent=msg; t.classList.add('show');
+  setTimeout(()=>t.classList.remove('show'),2500);
+}
+
+// ═══════════════════════════════════════════════
+// DEFAULT FAHRTEN (Placeholder - wird durch Import ersetzt)
+// ═══════════════════════════════════════════════
+
+// ═══════════════════════════════════════════════
+// INIT
+// ═══════════════════════════════════════════════
+const DEFAULT_FAHRTEN = [{"id":1000,"datum":"2026-01-01","nr":1,"taxa":12.1,"bezahlt":20.0,"rueckgeld":5.0,"komm":0,"zahlart":"Bar","km":0,"zz":0,"tip":2.9,"anteil":5.4,"gesamt":8.3},{"id":1001,"datum":"2026-01-01","nr":2,"taxa":21.7,"bezahlt":25.0,"rueckgeld":0,"komm":0,"zahlart":"Bar","km":0,"zz":0,"tip":3.3,"anteil":9.8,"gesamt":13.1},{"id":1002,"datum":"2026-01-01","nr":3,"taxa":12.5,"bezahlt":20.0,"rueckgeld":5.0,"komm":0,"zahlart":"Bar","km":0,"zz":0,"tip":2.5,"anteil":5.6,"gesamt":8.1},{"id":1003,"datum":"2026-01-01","nr":4,"taxa":31.3,"bezahlt":40.0,"rueckgeld":5.0,"komm":0,"zahlart":"Bar","km":0,"zz":0,"tip":3.7,"anteil":14.1,"gesamt":17.8},{"id":1004,"datum":"2026-01-01","nr":5,"taxa":17.2,"bezahlt":20.0,"rueckgeld":0,"komm":0,"zahlart":"Bar","km":0,"zz":0,"tip":2.8,"anteil":7.7,"gesamt":10.5},{"id":1005,"datum":"2026-01-01","nr":6,"taxa":6.5,"bezahlt":15.0,"rueckgeld":0,"komm":0,"zahlart":"Bar","km":0,"zz":0,"tip":8.5,"anteil":2.9,"gesamt":11.4},{"id":1006,"datum":"2026-01-01","nr":7,"taxa":49.9,"bezahlt":50.0,"rueckgeld":0,"komm":0,"zahlart":"Bar","km":0,"zz":0,"tip":0.1,"anteil":22.5,"gesamt":22.6},{"id":1007,"datum":"2026-01-01","nr":8,"taxa":23.5,"bezahlt":25.0,"rueckgeld":0,"komm":0,"zahlart":"Bar","km":0,"zz":0,"tip":1.5,"anteil":10.6,"gesamt":12.1},{"id":1008,"datum":"2026-01-01","nr":9,"taxa":13.7,"bezahlt":15.0,"rueckgeld":0,"komm":0,"zahlart":"KK","km":0,"zz":0,"tip":1.3,"anteil":6.2,"gesamt":7.5},{"id":1009,"datum":"2026-01-01","nr":10,"taxa":38.6,"bezahlt":50.0,"rueckgeld":5.0,"komm":0,"zahlart":"Bar","km":0,"zz":0,"tip":6.4,"anteil":17.4,"gesamt":23.8},{"id":1010,"datum":"2026-01-03","nr":1,"taxa":28.4,"bezahlt":31.0,"rueckgeld":0,"komm":0,"zahlart":"Bar","km":0,"zz":0,"tip":2.6,"anteil":12.8,"gesamt":15.4},{"id":1011,"datum":"2026-01-03","nr":2,"taxa":110.7,"bezahlt":120.0,"rueckgeld":5.0,"komm":0,"zahlart":"Bar","km":0,"zz":0,"tip":4.3,"anteil":49.8,"gesamt":54.1},{"id":1012,"datum":"2026-01-04","nr":1,"taxa":8.8,"bezahlt":10.0,"rueckgeld":0,"komm":0,"zahlart":"KK","km":0,"zz":0,"tip":1.2,"anteil":4.0,"gesamt":5.2},{"id":1013,"datum":"2026-01-04","nr":2,"taxa":14.7,"bezahlt":20.0,"rueckgeld":0,"komm":0,"zahlart":"Bar","km":0,"zz":0,"tip":5.3,"anteil":6.6,"gesamt":11.9},{"id":1014,"datum":"2026-01-04","nr":3,"taxa":20.2,"bezahlt":22.0,"rueckgeld":0,"komm":0,"zahlart":"Bar","km":0,"zz":0,"tip":1.8,"anteil":9.1,"gesamt":10.9},{"id":1015,"datum":"2026-01-04","nr":4,"taxa":19.9,"bezahlt":22.0,"rueckgeld":0,"komm":0,"zahlart":"Bar","km":0,"zz":0,"tip":2.1,"anteil":9.0,"gesamt":11.1},{"id":1016,"datum":"2026-01-04","nr":5,"taxa":8.8,"bezahlt":100.0,"rueckgeld":90.0,"komm":0,"zahlart":"Bar","km":0,"zz":0,"tip":1.2,"anteil":4.0,"gesamt":5.2},{"id":1017,"datum":"2026-01-04","nr":6,"taxa":10.9,"bezahlt":50.0,"rueckgeld":20.0,"komm":0,"zahlart":"Bar","km":0,"zz":0,"tip":19.1,"anteil":4.9,"gesamt":24.0},{"id":1018,"datum":"2026-01-04","nr":7,"taxa":14.3,"bezahlt":15.0,"rueckgeld":0,"komm":0,"zahlart":"Bar","km":0,"zz":0,"tip":0.7,"anteil":6.4,"gesamt":7.1},{"id":1019,"datum":"2026-01-04","nr":8,"taxa":16.1,"bezahlt":20.0,"rueckgeld":0,"komm":0,"zahlart":"Bar","km":0,"zz":0,"tip":3.9,"anteil":7.2,"gesamt":11.1},{"id":1020,"datum":"2026-01-04","nr":9,"taxa":10.9,"bezahlt":13.5,"rueckgeld":0,"komm":0,"zahlart":"Bar","km":0,"zz":0,"tip":2.6,"anteil":4.9,"gesamt":7.5},{"id":1021,"datum":"2026-01-04","nr":10,"taxa":14.1,"bezahlt":20.0,"rueckgeld":3.0,"komm":0,"zahlart":"Bar","km":0,"zz":0,"tip":2.9,"anteil":6.3,"gesamt":9.2},{"id":1022,"datum":"2026-01-10","nr":1,"taxa":11.9,"bezahlt":15.0,"rueckgeld":0,"komm":0,"zahlart":"Bar","km":0,"zz":0,"tip":3.1,"anteil":5.4,"gesamt":8.5},{"id":1023,"datum":"2026-01-10","nr":2,"taxa":39.32,"bezahlt":39.32,"rueckgeld":0,"komm":0,"zahlart":"KTS-ZZ","km":13.0,"zz":5.0,"tip":0,"anteil":17.7,"gesamt":17.7},{"id":1024,"datum":"2026-01-10","nr":3,"taxa":32.3,"bezahlt":40.0,"rueckgeld":0,"komm":0,"zahlart":"Bar","km":0,"zz":0,"tip":7.7,"anteil":14.5,"gesamt":22.2},{"id":1025,"datum":"2026-01-10","nr":4,"taxa":10.5,"bezahlt":10.5,"rueckgeld":0,"komm":0,"zahlart":"KK","km":0,"zz":0,"tip":0,"anteil":4.7,"gesamt":4.7},{"id":1026,"datum":"2026-01-10","nr":5,"taxa":43.2,"bezahlt":43.2,"rueckgeld":0,"komm":0,"zahlart":"KK","km":0,"zz":0,"tip":0,"anteil":19.4,"gesamt":19.4},{"id":1027,"datum":"2026-01-10","nr":6,"taxa":35.3,"bezahlt":50.0,"rueckgeld":10.0,"komm":0,"zahlart":"Bar","km":0,"zz":0,"tip":4.7,"anteil":15.9,"gesamt":20.6},{"id":1028,"datum":"2026-01-10","nr":7,"taxa":48.9,"bezahlt":50.0,"rueckgeld":0,"komm":0,"zahlart":"Bar","km":0,"zz":0,"tip":1.1,"anteil":22.0,"gesamt":23.1},{"id":1029,"datum":"2026-01-10","nr":8,"taxa":35.0,"bezahlt":35.0,"rueckgeld":0,"komm":0,"zahlart":"KK","km":0,"zz":0,"tip":0,"anteil":15.8,"gesamt":15.8},{"id":1030,"datum":"2026-01-10","nr":9,"taxa":9.1,"bezahlt":10.0,"rueckgeld":0,"komm":0,"zahlart":"Bar","km":0,"zz":0,"tip":0.9,"anteil":4.1,"gesamt":5.0},{"id":1031,"datum":"2026-01-10","nr":10,"taxa":11.3,"bezahlt":13.2,"rueckgeld":0,"komm":0,"zahlart":"Bar","km":0,"zz":0,"tip":1.9,"anteil":5.1,"gesamt":7.0},{"id":1032,"datum":"2026-01-10","nr":11,"taxa":6.7,"bezahlt":10.0,"rueckgeld":0,"komm":0,"zahlart":"Bar","km":0,"zz":0,"tip":3.3,"anteil":3.0,"gesamt":6.3},{"id":1033,"datum":"2026-01-10","nr":12,"taxa":18.3,"bezahlt":50.0,"rueckgeld":31.0,"komm":0,"zahlart":"Bar","km":0,"zz":0,"tip":0.7,"anteil":8.2,"gesamt":8.9},{"id":1034,"datum":"2026-01-10","nr":13,"taxa":7.4,"bezahlt":10.0,"rueckgeld":0,"komm":0,"zahlart":"Bar","km":0,"zz":0,"tip":2.6,"anteil":3.3,"gesamt":5.9},{"id":1035,"datum":"2026-01-10","nr":14,"taxa":8.9,"bezahlt":10.0,"rueckgeld":0,"komm":0,"zahlart":"Bar","km":0,"zz":0,"tip":1.1,"anteil":4.0,"gesamt":5.1},{"id":1036,"datum":"2026-01-10","nr":15,"taxa":11.3,"bezahlt":12.0,"rueckgeld":0,"komm":0,"zahlart":"Bar","km":0,"zz":0,"tip":0.7,"anteil":5.1,"gesamt":5.8},{"id":1037,"datum":"2026-01-14","nr":1,"taxa":11.6,"bezahlt":20.0,"rueckgeld":5.0,"komm":0,"zahlart":"Bar","km":0,"zz":0,"tip":3.4,"anteil":5.2,"gesamt":8.6},{"id":1038,"datum":"2026-01-14","nr":2,"taxa":13.4,"bezahlt":13.4,"rueckgeld":0,"komm":1.1,"zahlart":"FN-A","km":0,"zz":0,"tip":0,"anteil":5.5,"gesamt":5.5},{"id":1039,"datum":"2026-01-14","nr":3,"taxa":34.3,"bezahlt":37.73,"rueckgeld":0,"komm":4.08,"zahlart":"FN-A FP","km":0,"zz":0,"tip":3.43,"anteil":13.4,"gesamt":16.83},{"id":1040,"datum":"2026-01-14","nr":4,"taxa":6.9,"bezahlt":10.0,"rueckgeld":0,"komm":0,"zahlart":"KK","km":0,"zz":0,"tip":3.1,"anteil":3.1,"gesamt":6.2},{"id":1041,"datum":"2026-01-14","nr":5,"taxa":13.4,"bezahlt":15.0,"rueckgeld":0,"komm":1.25,"zahlart":"FN-A","km":0,"zz":0,"tip":1.6,"anteil":5.4,"gesamt":7.0},{"id":1042,"datum":"2026-01-14","nr":6,"taxa":16.3,"bezahlt":20.0,"rueckgeld":2.0,"komm":1.36,"zahlart":"FN-B","km":0,"zz":0,"tip":1.7,"anteil":6.7,"gesamt":8.4},{"id":1043,"datum":"2026-01-14","nr":7,"taxa":12.0,"bezahlt":15.0,"rueckgeld":0,"komm":1.43,"zahlart":"FN-A","km":0,"zz":0,"tip":3.0,"anteil":4.7,"gesamt":7.7},{"id":1044,"datum":"2026-01-14","nr":8,"taxa":15.7,"bezahlt":18.7,"rueckgeld":0,"komm":1.87,"zahlart":"FN-A FP","km":0,"zz":0,"tip":3.0,"anteil":6.1,"gesamt":9.1},{"id":1045,"datum":"2026-01-14","nr":9,"taxa":63.7,"bezahlt":70.0,"rueckgeld":0,"komm":0,"zahlart":"KK","km":0,"zz":0,"tip":6.3,"anteil":28.7,"gesamt":35.0},{"id":1046,"datum":"2026-01-14","nr":10,"taxa":13.3,"bezahlt":20.0,"rueckgeld":5.0,"komm":0,"zahlart":"Bar","km":0,"zz":0,"tip":1.7,"anteil":6.0,"gesamt":7.7},{"id":1047,"datum":"2026-01-14","nr":11,"taxa":56.3,"bezahlt":60.0,"rueckgeld":0,"komm":0,"zahlart":"KK","km":0,"zz":0,"tip":3.7,"anteil":25.3,"gesamt":29.0},{"id":1048,"datum":"2026-01-19","nr":1,"taxa":28.4,"bezahlt":30.0,"rueckgeld":0,"komm":2.36,"zahlart":"FN-B","km":0,"zz":0,"tip":1.6,"anteil":11.6,"gesamt":13.2},{"id":1049,"datum":"2026-01-19","nr":2,"taxa":17.0,"bezahlt":17.0,"rueckgeld":0,"komm":0,"zahlart":"Bar","km":0,"zz":0,"tip":0,"anteil":7.7,"gesamt":7.7},{"id":1050,"datum":"2026-01-19","nr":3,"taxa":9.9,"bezahlt":9.9,"rueckgeld":0,"komm":1.18,"zahlart":"FN-A","km":0,"zz":0,"tip":0,"anteil":3.9,"gesamt":3.9},{"id":1051,"datum":"2026-01-19","nr":4,"taxa":43.7,"bezahlt":43.7,"rueckgeld":0,"komm":5.2,"zahlart":"FN-A","km":0,"zz":0,"tip":0,"anteil":17.1,"gesamt":17.1},{"id":1052,"datum":"2026-01-19","nr":5,"taxa":34.5,"bezahlt":34.5,"rueckgeld":0,"komm":4.11,"zahlart":"FN-A","km":0,"zz":0,"tip":0,"anteil":13.5,"gesamt":13.5},{"id":1053,"datum":"2026-01-19","nr":6,"taxa":24.1,"bezahlt":28.0,"rueckgeld":0,"komm":0,"zahlart":"KK","km":0,"zz":0,"tip":3.9,"anteil":10.8,"gesamt":14.7},{"id":1054,"datum":"2026-01-19","nr":7,"taxa":97.7,"bezahlt":100.0,"rueckgeld":0,"komm":1.0,"zahlart":"FN-B","km":0,"zz":0,"tip":2.3,"anteil":43.5,"gesamt":45.8},{"id":1055,"datum":"2026-02-01","nr":1,"taxa":13.4,"bezahlt":20.0,"rueckgeld":5.0,"komm":0,"zahlart":"Bar","km":0,"zz":0,"tip":1.6,"anteil":6.0,"gesamt":7.6},{"id":1056,"datum":"2026-02-01","nr":2,"taxa":28.5,"bezahlt":30.0,"rueckgeld":0,"komm":0,"zahlart":"KK","km":0,"zz":0,"tip":1.5,"anteil":12.8,"gesamt":14.3},{"id":1057,"datum":"2026-02-01","nr":3,"taxa":13.9,"bezahlt":20.0,"rueckgeld":3.0,"komm":0,"zahlart":"Bar","km":0,"zz":0,"tip":3.1,"anteil":6.3,"gesamt":9.4},{"id":1058,"datum":"2026-02-01","nr":4,"taxa":9.2,"bezahlt":10.0,"rueckgeld":0,"komm":0,"zahlart":"Bar","km":0,"zz":0,"tip":0.8,"anteil":4.1,"gesamt":4.9},{"id":1059,"datum":"2026-02-01","nr":5,"taxa":62.9,"bezahlt":70.0,"rueckgeld":0,"komm":0,"zahlart":"Bar","km":0,"zz":0,"tip":7.1,"anteil":28.3,"gesamt":35.4},{"id":1060,"datum":"2026-02-01","nr":6,"taxa":21.4,"bezahlt":21.4,"rueckgeld":0,"komm":2.55,"zahlart":"FN-A","km":0,"zz":0,"tip":0,"anteil":8.4,"gesamt":8.4},{"id":1061,"datum":"2026-02-01","nr":7,"taxa":32.1,"bezahlt":32.1,"rueckgeld":0,"komm":0,"zahlart":"KK","km":0,"zz":0,"tip":0,"anteil":14.4,"gesamt":14.4},{"id":1062,"datum":"2026-02-01","nr":8,"taxa":9.8,"bezahlt":9.8,"rueckgeld":0,"komm":0.76,"zahlart":"FN-A","km":0,"zz":0,"tip":0,"anteil":4.0,"gesamt":4.0},{"id":1063,"datum":"2026-02-01","nr":9,"taxa":8.4,"bezahlt":10.0,"rueckgeld":0,"komm":0,"zahlart":"Bar","km":0,"zz":0,"tip":1.6,"anteil":3.8,"gesamt":5.4},{"id":1064,"datum":"2026-02-01","nr":10,"taxa":4.58,"bezahlt":4.58,"rueckgeld":0,"komm":0,"zahlart":"FN-A","km":0,"zz":0,"tip":0,"anteil":2.1,"gesamt":2.1},{"id":1065,"datum":"2026-02-04","nr":1,"taxa":23.3,"bezahlt":25.0,"rueckgeld":0,"komm":0,"zahlart":"Bar","km":0,"zz":0,"tip":1.7,"anteil":10.5,"gesamt":12.2},{"id":1066,"datum":"2026-02-04","nr":2,"taxa":23.9,"bezahlt":25.0,"rueckgeld":0,"komm":0,"zahlart":"Bar","km":0,"zz":0,"tip":1.1,"anteil":10.8,"gesamt":11.9},{"id":1067,"datum":"2026-02-04","nr":3,"taxa":10.7,"bezahlt":12.2,"rueckgeld":0,"komm":0.88,"zahlart":"FN-A","km":0,"zz":0,"tip":1.5,"anteil":4.4,"gesamt":5.9},{"id":1068,"datum":"2026-02-04","nr":4,"taxa":11.0,"bezahlt":12.0,"rueckgeld":0,"komm":0,"zahlart":"Bar","km":0,"zz":0,"tip":1.0,"anteil":5.0,"gesamt":6.0},{"id":1069,"datum":"2026-02-04","nr":5,"taxa":36.0,"bezahlt":40.0,"rueckgeld":0,"komm":0,"zahlart":"Bar","km":0,"zz":0,"tip":4.0,"anteil":16.2,"gesamt":20.2},{"id":1070,"datum":"2026-02-04","nr":6,"taxa":13.4,"bezahlt":20.0,"rueckgeld":0,"komm":1.11,"zahlart":"FN-B","km":0,"zz":0,"tip":6.6,"anteil":5.5,"gesamt":12.1},{"id":1071,"datum":"2026-02-04","nr":7,"taxa":16.9,"bezahlt":20.0,"rueckgeld":3.0,"komm":1.4,"zahlart":"FN-B","km":0,"zz":0,"tip":0.1,"anteil":6.9,"gesamt":7.0},{"id":1072,"datum":"2026-02-04","nr":8,"taxa":22.9,"bezahlt":25.0,"rueckgeld":0,"komm":0,"zahlart":"Bar","km":0,"zz":0,"tip":2.1,"anteil":10.3,"gesamt":12.4},{"id":1073,"datum":"2026-02-04","nr":9,"taxa":10.9,"bezahlt":15.0,"rueckgeld":0,"komm":0,"zahlart":"KK","km":0,"zz":0,"tip":4.1,"anteil":4.9,"gesamt":9.0},{"id":1074,"datum":"2026-02-04","nr":10,"taxa":11.9,"bezahlt":50.0,"rueckgeld":37.0,"komm":0,"zahlart":"Bar","km":0,"zz":0,"tip":1.1,"anteil":5.4,"gesamt":6.5},{"id":1075,"datum":"2026-02-04","nr":11,"taxa":11.5,"bezahlt":12.0,"rueckgeld":0,"komm":0,"zahlart":"KK","km":0,"zz":0,"tip":0.5,"anteil":5.2,"gesamt":5.7},{"id":1076,"datum":"2026-02-04","nr":12,"taxa":25.8,"bezahlt":25.8,"rueckgeld":0,"komm":0,"zahlart":"KK","km":0,"zz":0,"tip":0,"anteil":11.6,"gesamt":11.6},{"id":1077,"datum":"2026-02-04","nr":13,"taxa":36.5,"bezahlt":36.5,"rueckgeld":0,"komm":3.03,"zahlart":"KK","km":0,"zz":0,"tip":0,"anteil":14.9,"gesamt":14.9},{"id":1078,"datum":"2026-02-11","nr":1,"taxa":8.7,"bezahlt":10.0,"rueckgeld":1.0,"komm":0,"zahlart":"Bar","km":0,"zz":0,"tip":0.3,"anteil":3.9,"gesamt":4.2},{"id":1079,"datum":"2026-02-11","nr":2,"taxa":13.7,"bezahlt":20.0,"rueckgeld":3.0,"komm":0,"zahlart":"Bar","km":0,"zz":0,"tip":3.3,"anteil":6.2,"gesamt":9.5},{"id":1080,"datum":"2026-02-11","nr":3,"taxa":26.0,"bezahlt":28.0,"rueckgeld":0,"komm":0,"zahlart":"Bar","km":0,"zz":0,"tip":2.0,"anteil":11.7,"gesamt":13.7},{"id":1081,"datum":"2026-02-11","nr":4,"taxa":18.3,"bezahlt":50.0,"rueckgeld":31.7,"komm":0,"zahlart":"Bar","km":0,"zz":0,"tip":0,"anteil":8.2,"gesamt":8.2},{"id":1082,"datum":"2026-02-11","nr":5,"taxa":17.5,"bezahlt":17.5,"rueckgeld":0,"komm":1.45,"zahlart":"FN-A","km":0,"zz":0,"tip":0,"anteil":7.2,"gesamt":7.2},{"id":1083,"datum":"2026-02-11","nr":6,"taxa":18.5,"bezahlt":20.0,"rueckgeld":0,"komm":0,"zahlart":"Bar","km":0,"zz":0,"tip":1.5,"anteil":8.3,"gesamt":9.8},{"id":1084,"datum":"2026-02-11","nr":7,"taxa":33.6,"bezahlt":50.0,"rueckgeld":15.0,"komm":0,"zahlart":"Bar","km":0,"zz":0,"tip":1.4,"anteil":15.1,"gesamt":16.5},{"id":1085,"datum":"2026-02-11","nr":8,"taxa":6.2,"bezahlt":6.2,"rueckgeld":0,"komm":0,"zahlart":"KK","km":0,"zz":0,"tip":0,"anteil":2.8,"gesamt":2.8},{"id":1086,"datum":"2026-02-21","nr":1,"taxa":9.9,"bezahlt":12.0,"rueckgeld":0,"komm":0,"zahlart":"Bar","km":0,"zz":0,"tip":2.1,"anteil":4.5,"gesamt":6.6},{"id":1087,"datum":"2026-02-21","nr":2,"taxa":14.3,"bezahlt":15.0,"rueckgeld":0,"komm":0,"zahlart":"Bar","km":0,"zz":0,"tip":0.7,"anteil":6.4,"gesamt":7.1},{"id":1088,"datum":"2026-02-21","nr":3,"taxa":21.0,"bezahlt":22.0,"rueckgeld":0,"komm":1.75,"zahlart":"FN-B","km":0,"zz":0,"tip":1.0,"anteil":8.6,"gesamt":9.6},{"id":1089,"datum":"2026-02-21","nr":4,"taxa":17.4,"bezahlt":20.0,"rueckgeld":0,"komm":0,"zahlart":"Bar","km":0,"zz":0,"tip":2.6,"anteil":7.8,"gesamt":10.4},{"id":1090,"datum":"2026-02-21","nr":5,"taxa":19.1,"bezahlt":22.1,"rueckgeld":0,"komm":1.58,"zahlart":"FN-A","km":0,"zz":0,"tip":3.0,"anteil":7.8,"gesamt":10.8},{"id":1091,"datum":"2026-02-21","nr":6,"taxa":15.3,"bezahlt":20.0,"rueckgeld":0,"komm":0,"zahlart":"KK","km":0,"zz":0,"tip":4.7,"anteil":6.9,"gesamt":11.6},{"id":1092,"datum":"2026-02-21","nr":7,"taxa":6.4,"bezahlt":10.0,"rueckgeld":1.0,"komm":0,"zahlart":"Bar","km":0,"zz":0,"tip":2.6,"anteil":2.9,"gesamt":5.5},{"id":1093,"datum":"2026-02-21","nr":8,"taxa":10.3,"bezahlt":20.0,"rueckgeld":7.0,"komm":0,"zahlart":"Bar","km":0,"zz":0,"tip":2.7,"anteil":4.6,"gesamt":7.3},{"id":1094,"datum":"2026-02-21","nr":9,"taxa":9.0,"bezahlt":9.0,"rueckgeld":0,"komm":0.75,"zahlart":"FN-B","km":0,"zz":0,"tip":0,"anteil":3.7,"gesamt":3.7},{"id":1095,"datum":"2026-02-21","nr":10,"taxa":9.7,"bezahlt":20.0,"rueckgeld":10.0,"komm":0,"zahlart":"Bar","km":0,"zz":0,"tip":0.3,"anteil":4.4,"gesamt":4.7},{"id":1096,"datum":"2026-02-21","nr":11,"taxa":17.2,"bezahlt":50.0,"rueckgeld":30.0,"komm":0,"zahlart":"Bar","km":0,"zz":0,"tip":2.8,"anteil":7.7,"gesamt":10.5},{"id":1097,"datum":"2026-02-21","nr":12,"taxa":11.3,"bezahlt":15.0,"rueckgeld":2.0,"komm":0.94,"zahlart":"FN-B","km":0,"zz":0,"tip":1.7,"anteil":4.6,"gesamt":6.3},{"id":1098,"datum":"2026-02-21","nr":13,"taxa":37.3,"bezahlt":40.0,"rueckgeld":0,"komm":0,"zahlart":"KK","km":0,"zz":0,"tip":2.7,"anteil":16.8,"gesamt":19.5},{"id":1099,"datum":"2026-02-21","nr":14,"taxa":6.9,"bezahlt":10.0,"rueckgeld":0,"komm":0,"zahlart":"Bar","km":0,"zz":0,"tip":3.1,"anteil":3.1,"gesamt":6.2},{"id":1100,"datum":"2026-02-21","nr":15,"taxa":10.7,"bezahlt":12.0,"rueckgeld":0,"komm":0,"zahlart":"Bar","km":0,"zz":0,"tip":1.3,"anteil":4.8,"gesamt":6.1},{"id":1101,"datum":"2026-02-21","nr":16,"taxa":8.5,"bezahlt":100.0,"rueckgeld":90.0,"komm":0,"zahlart":"Bar","km":0,"zz":0,"tip":1.5,"anteil":3.8,"gesamt":5.3},{"id":1102,"datum":"2026-02-25","nr":1,"taxa":20.0,"bezahlt":25.0,"rueckgeld":0,"komm":0,"zahlart":"Bar","km":0,"zz":0,"tip":5.0,"anteil":9.0,"gesamt":14.0},{"id":1103,"datum":"2026-02-25","nr":2,"taxa":21.5,"bezahlt":24.5,"rueckgeld":0,"komm":1.87,"zahlart":"FN-A","km":0,"zz":0,"tip":3.0,"anteil":8.7,"gesamt":11.7},{"id":1104,"datum":"2026-02-25","nr":3,"taxa":32.0,"bezahlt":50.0,"rueckgeld":16.0,"komm":0,"zahlart":"Bar","km":0,"zz":0,"tip":2.0,"anteil":14.4,"gesamt":16.4},{"id":1105,"datum":"2026-02-25","nr":4,"taxa":22.0,"bezahlt":24.2,"rueckgeld":0,"komm":2.62,"zahlart":"FN-A","km":0,"zz":0,"tip":2.2,"anteil":8.6,"gesamt":10.8},{"id":1106,"datum":"2026-02-25","nr":5,"taxa":20.7,"bezahlt":22.7,"rueckgeld":0,"komm":1.71,"zahlart":"FN-A","km":0,"zz":0,"tip":2.0,"anteil":8.5,"gesamt":10.5},{"id":1107,"datum":"2026-02-25","nr":6,"taxa":8.9,"bezahlt":10.0,"rueckgeld":0,"komm":0,"zahlart":"Bar","km":0,"zz":0,"tip":1.1,"anteil":4.0,"gesamt":5.1},{"id":1108,"datum":"2026-02-25","nr":7,"taxa":11.3,"bezahlt":13.3,"rueckgeld":0,"komm":1.34,"zahlart":"FN-A","km":0,"zz":0,"tip":2.0,"anteil":4.4,"gesamt":6.4},{"id":1109,"datum":"2026-02-25","nr":8,"taxa":59.0,"bezahlt":59.0,"rueckgeld":0,"komm":0,"zahlart":"Re.F","km":0,"zz":0,"tip":0,"anteil":26.6,"gesamt":26.6},{"id":1110,"datum":"2026-02-25","nr":9,"taxa":58.7,"bezahlt":58.7,"rueckgeld":0,"komm":0,"zahlart":"Bar","km":0,"zz":0,"tip":0,"anteil":26.4,"gesamt":26.4},{"id":1111,"datum":"2026-02-27","nr":1,"taxa":9.0,"bezahlt":20.0,"rueckgeld":10.0,"komm":1.07,"zahlart":"FN-B","km":0,"zz":0,"tip":1.0,"anteil":3.5,"gesamt":4.5},{"id":1112,"datum":"2026-02-27","nr":2,"taxa":24.5,"bezahlt":50.0,"rueckgeld":24.0,"komm":0,"zahlart":"Bar","km":0,"zz":0,"tip":1.5,"anteil":11.0,"gesamt":12.5},{"id":1113,"datum":"2026-02-27","nr":3,"taxa":16.9,"bezahlt":20.0,"rueckgeld":0,"komm":0,"zahlart":"Bar","km":0,"zz":0,"tip":3.1,"anteil":7.6,"gesamt":10.7},{"id":1114,"datum":"2026-02-27","nr":4,"taxa":23.3,"bezahlt":50.0,"rueckgeld":25.0,"komm":0,"zahlart":"Bar","km":0,"zz":0,"tip":1.7,"anteil":10.5,"gesamt":12.2},{"id":1115,"datum":"2026-02-27","nr":5,"taxa":11.9,"bezahlt":20.0,"rueckgeld":6.0,"komm":0,"zahlart":"Bar","km":0,"zz":0,"tip":2.1,"anteil":5.4,"gesamt":7.5},{"id":1116,"datum":"2026-02-27","nr":6,"taxa":9.2,"bezahlt":10.0,"rueckgeld":0,"komm":0,"zahlart":"Bar","km":0,"zz":0,"tip":0.8,"anteil":4.1,"gesamt":4.9},{"id":1117,"datum":"2026-02-27","nr":7,"taxa":12.9,"bezahlt":15.0,"rueckgeld":0,"komm":0,"zahlart":"Bar","km":0,"zz":0,"tip":2.1,"anteil":5.8,"gesamt":7.9},{"id":1118,"datum":"2026-02-27","nr":8,"taxa":127.3,"bezahlt":127.3,"rueckgeld":0,"komm":0,"zahlart":"Re.F","km":0,"zz":0,"tip":0,"anteil":57.3,"gesamt":57.3},{"id":1119,"datum":"2026-02-27","nr":9,"taxa":25.5,"bezahlt":30.0,"rueckgeld":3.0,"komm":0,"zahlart":"Bar","km":0,"zz":0,"tip":1.5,"anteil":11.5,"gesamt":13.0},{"id":1120,"datum":"2026-02-27","nr":10,"taxa":25.6,"bezahlt":25.6,"rueckgeld":0,"komm":0,"zahlart":"KK","km":0,"zz":0,"tip":0,"anteil":11.5,"gesamt":11.5},{"id":1121,"datum":"2026-03-04","nr":1,"taxa":35.3,"bezahlt":39.3,"rueckgeld":0,"komm":2.94,"zahlart":"FN-A","km":0,"zz":0,"tip":4.0,"anteil":14.4,"gesamt":18.4},{"id":1122,"datum":"2026-03-04","nr":2,"taxa":8.4,"bezahlt":10.0,"rueckgeld":0,"komm":0,"zahlart":"Bar","km":0,"zz":0,"tip":1.6,"anteil":3.8,"gesamt":5.4},{"id":1123,"datum":"2026-03-04","nr":3,"taxa":12.0,"bezahlt":12.0,"rueckgeld":0,"komm":1.0,"zahlart":"FN-A","km":0,"zz":0,"tip":0,"anteil":4.9,"gesamt":4.9},{"id":1124,"datum":"2026-03-04","nr":4,"taxa":20.4,"bezahlt":21.0,"rueckgeld":0,"komm":0,"zahlart":"Bar","km":0,"zz":0,"tip":0.6,"anteil":9.2,"gesamt":9.8},{"id":1125,"datum":"2026-03-04","nr":5,"taxa":12.6,"bezahlt":20.0,"rueckgeld":5.0,"komm":0,"zahlart":"Bar","km":0,"zz":0,"tip":2.4,"anteil":5.7,"gesamt":8.1},{"id":1126,"datum":"2026-03-04","nr":6,"taxa":17.3,"bezahlt":50.0,"rueckgeld":30.0,"komm":0,"zahlart":"Bar","km":0,"zz":0,"tip":2.7,"anteil":7.8,"gesamt":10.5},{"id":1127,"datum":"2026-03-04","nr":7,"taxa":12.5,"bezahlt":15.0,"rueckgeld":0,"komm":0,"zahlart":"KK","km":0,"zz":0,"tip":2.5,"anteil":5.6,"gesamt":8.1},{"id":1128,"datum":"2026-03-04","nr":8,"taxa":42.92,"bezahlt":42.92,"rueckgeld":0,"komm":0,"zahlart":"Re.F","km":0,"zz":0,"tip":0,"anteil":19.3,"gesamt":19.3},{"id":1129,"datum":"2026-03-04","nr":9,"taxa":11.0,"bezahlt":12.0,"rueckgeld":0,"komm":0,"zahlart":"Bar","km":0,"zz":0,"tip":1.0,"anteil":5.0,"gesamt":6.0},{"id":1130,"datum":"2026-03-04","nr":10,"taxa":8.6,"bezahlt":10.0,"rueckgeld":0,"komm":0,"zahlart":"KK","km":0,"zz":0,"tip":1.4,"anteil":3.9,"gesamt":5.3},{"id":1131,"datum":"2026-03-07","nr":1,"taxa":15.7,"bezahlt":20.0,"rueckgeld":4.3,"komm":1.3,"zahlart":"FN-B","km":0,"zz":0,"tip":0,"anteil":6.4,"gesamt":6.4},{"id":1132,"datum":"2026-03-07","nr":2,"taxa":12.9,"bezahlt":20.0,"rueckgeld":5.0,"komm":0,"zahlart":"Bar","km":0,"zz":0,"tip":2.1,"anteil":5.8,"gesamt":7.9},{"id":1133,"datum":"2026-03-07","nr":3,"taxa":34.0,"bezahlt":34.0,"rueckgeld":0,"komm":0,"zahlart":"Bar","km":0,"zz":0,"tip":0,"anteil":15.3,"gesamt":15.3},{"id":1134,"datum":"2026-03-07","nr":4,"taxa":19.0,"bezahlt":20.0,"rueckgeld":0,"komm":0,"zahlart":"Bar","km":0,"zz":0,"tip":1.0,"anteil":8.6,"gesamt":9.6},{"id":1135,"datum":"2026-03-07","nr":5,"taxa":15.9,"bezahlt":20.0,"rueckgeld":0,"komm":0,"zahlart":"Bar","km":0,"zz":0,"tip":4.1,"anteil":7.2,"gesamt":11.3},{"id":1136,"datum":"2026-03-07","nr":6,"taxa":16.0,"bezahlt":16.0,"rueckgeld":0,"komm":0,"zahlart":"Bar","km":0,"zz":0,"tip":0,"anteil":7.2,"gesamt":7.2},{"id":1137,"datum":"2026-03-07","nr":7,"taxa":11.9,"bezahlt":20.0,"rueckgeld":7.0,"komm":0,"zahlart":"Bar","km":0,"zz":0,"tip":1.1,"anteil":5.4,"gesamt":6.5},{"id":1138,"datum":"2026-03-07","nr":8,"taxa":11.7,"bezahlt":50.0,"rueckgeld":35.0,"komm":0,"zahlart":"Bar","km":0,"zz":0,"tip":3.3,"anteil":5.3,"gesamt":8.6},{"id":1139,"datum":"2026-03-07","nr":9,"taxa":12.5,"bezahlt":20.0,"rueckgeld":5.0,"komm":0,"zahlart":"Bar","km":0,"zz":0,"tip":2.5,"anteil":5.6,"gesamt":8.1},{"id":1140,"datum":"2026-03-07","nr":10,"taxa":7.8,"bezahlt":10.0,"rueckgeld":0,"komm":0,"zahlart":"KK","km":0,"zz":0,"tip":2.2,"anteil":3.5,"gesamt":5.7},{"id":1141,"datum":"2026-03-07","nr":11,"taxa":8.0,"bezahlt":10.0,"rueckgeld":0,"komm":0,"zahlart":"Bar","km":0,"zz":0,"tip":2.0,"anteil":3.6,"gesamt":5.6},{"id":1142,"datum":"2026-03-07","nr":12,"taxa":7.9,"bezahlt":10.0,"rueckgeld":0,"komm":0,"zahlart":"Bar","km":0,"zz":0,"tip":2.1,"anteil":3.6,"gesamt":5.7},{"id":1143,"datum":"2026-03-07","nr":13,"taxa":9.7,"bezahlt":17.5,"rueckgeld":0,"komm":0,"zahlart":"Bar","km":0,"zz":0,"tip":7.8,"anteil":4.4,"gesamt":12.2},{"id":1144,"datum":"2026-03-07","nr":14,"taxa":8.7,"bezahlt":8.7,"rueckgeld":0,"komm":0,"zahlart":"KK","km":0,"zz":0,"tip":0,"anteil":3.9,"gesamt":3.9},{"id":1145,"datum":"2026-03-07","nr":15,"taxa":11.6,"bezahlt":13.0,"rueckgeld":0,"komm":0,"zahlart":"KK","km":0,"zz":0,"tip":1.4,"anteil":5.2,"gesamt":6.6},{"id":1146,"datum":"2026-03-07","nr":16,"taxa":16.5,"bezahlt":20.0,"rueckgeld":3.5,"komm":2.36,"zahlart":"FN-B","km":0,"zz":0,"tip":0,"anteil":6.2,"gesamt":6.2},{"id":1147,"datum":"2026-03-07","nr":17,"taxa":8.5,"bezahlt":10.0,"rueckgeld":0,"komm":0,"zahlart":"Bar","km":0,"zz":0,"tip":1.5,"anteil":3.8,"gesamt":5.3},{"id":1148,"datum":"2026-03-07","nr":18,"taxa":11.0,"bezahlt":11.0,"rueckgeld":0,"komm":0,"zahlart":"Bar","km":0,"zz":0,"tip":0,"anteil":5.0,"gesamt":5.0},{"id":1149,"datum":"2026-03-14","nr":1,"taxa":6.8,"bezahlt":7.8,"rueckgeld":0,"komm":0,"zahlart":"Bar","km":0,"zz":0,"tip":1.0,"anteil":3.1,"gesamt":4.1},{"id":1150,"datum":"2026-03-14","nr":2,"taxa":19.9,"bezahlt":21.89,"rueckgeld":0,"komm":2.37,"zahlart":"FN-A FP","km":0,"zz":0,"tip":1.99,"anteil":7.8,"gesamt":9.79},{"id":1151,"datum":"2026-03-14","nr":3,"taxa":7.7,"bezahlt":7.7,"rueckgeld":0,"komm":0.92,"zahlart":"FN-A FP","km":0,"zz":0,"tip":0,"anteil":3.0,"gesamt":3.0},{"id":1152,"datum":"2026-03-14","nr":4,"taxa":13.1,"bezahlt":20.0,"rueckgeld":5.0,"komm":0,"zahlart":"Bar","km":0,"zz":0,"tip":1.9,"anteil":5.9,"gesamt":7.8},{"id":1153,"datum":"2026-03-14","nr":5,"taxa":13.1,"bezahlt":15.0,"rueckgeld":0,"komm":0,"zahlart":"Bar","km":0,"zz":0,"tip":1.9,"anteil":5.9,"gesamt":7.8},{"id":1154,"datum":"2026-03-14","nr":6,"taxa":12.4,"bezahlt":12.4,"rueckgeld":0,"komm":0,"zahlart":"KK","km":0,"zz":0,"tip":0,"anteil":5.6,"gesamt":5.6},{"id":1155,"datum":"2026-03-14","nr":7,"taxa":10.6,"bezahlt":12.0,"rueckgeld":0,"komm":0,"zahlart":"Bar","km":0,"zz":0,"tip":1.4,"anteil":4.8,"gesamt":6.2},{"id":1156,"datum":"2026-03-14","nr":8,"taxa":15.8,"bezahlt":17.38,"rueckgeld":0,"komm":1.31,"zahlart":"FN-A","km":0,"zz":0,"tip":1.58,"anteil":6.5,"gesamt":8.08},{"id":1157,"datum":"2026-03-14","nr":9,"taxa":37.3,"bezahlt":40.0,"rueckgeld":0,"komm":0,"zahlart":"KK","km":0,"zz":0,"tip":2.7,"anteil":16.8,"gesamt":19.5},{"id":1158,"datum":"2026-03-14","nr":10,"taxa":12.5,"bezahlt":13.75,"rueckgeld":0,"komm":1.04,"zahlart":"FN-A","km":0,"zz":0,"tip":1.25,"anteil":5.1,"gesamt":6.35},{"id":1159,"datum":"2026-03-14","nr":11,"taxa":90.0,"bezahlt":95.0,"rueckgeld":0,"komm":0,"zahlart":"KK","km":0,"zz":0,"tip":5.0,"anteil":40.5,"gesamt":45.5},{"id":1160,"datum":"2026-03-14","nr":12,"taxa":14.1,"bezahlt":20.0,"rueckgeld":0,"komm":0,"zahlart":"KK","km":0,"zz":0,"tip":5.9,"anteil":6.3,"gesamt":12.2},{"id":1161,"datum":"2026-03-14","nr":13,"taxa":11.7,"bezahlt":12.0,"rueckgeld":0,"komm":0,"zahlart":"Bar","km":0,"zz":0,"tip":0.3,"anteil":5.3,"gesamt":5.6},{"id":1162,"datum":"2026-03-14","nr":14,"taxa":8.6,"bezahlt":9.0,"rueckgeld":0,"komm":0,"zahlart":"Bar","km":0,"zz":0,"tip":0.4,"anteil":3.9,"gesamt":4.3},{"id":1163,"datum":"2026-03-14","nr":15,"taxa":17.2,"bezahlt":20.0,"rueckgeld":0,"komm":0,"zahlart":"Bar","km":0,"zz":0,"tip":2.8,"anteil":7.7,"gesamt":10.5}];
+
+function init() {
+  // Einmalige Übernahme der Daten aus der früheren App-Version (andere Speicher-Schlüssel)
+  [['taxi_fahrten',KEYS.FAHRTEN],['taxi_driver',KEYS.DRIVER],['taxi_api_url',KEYS.API_URL],
+   ['taxi_fahrer_id',KEYS.FAHRER_ID],['kts_grund',KEYS.KTS_GRUND],['kts_km',KEYS.KTS_KM],['taxi_chef_id',KEYS.CHEF_ID]].forEach(([from,to])=>{
+    if (!ls.get(to) && ls.get(from)) ls.set(to, ls.get(from));
+  });
+  const saved = ls.get(KEYS.FAHRTEN);
+  fahrerId = ls.get(KEYS.FAHRER_ID) || '3010';
+  if (saved) {
+    try { fahrten = JSON.parse(saved); } catch { fahrten = DEFAULT_FAHRTEN.slice(); }
+  } else {
+    fahrten = DEFAULT_FAHRTEN.slice();
+    save();
+  }
+  const dates = [...new Set(fahrten.map(f=>f.datum))].sort();
+  const today = new Date().toISOString().slice(0,10);
+  const di = document.getElementById('dateInput');
+  di.value = dates.includes(today) ? today : (dates[dates.length-1]||today);
+  onZahlartChange();
+  render();
+}
+
+document.addEventListener('DOMContentLoaded', init);
+
+</script>
+</body>
+</html>
