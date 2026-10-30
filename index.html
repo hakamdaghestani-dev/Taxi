@@ -563,17 +563,25 @@ function calcKtsTaxa(km) {
   const g = t.grund || 17.90, k = t.km || 2.38;
   return Math.round((km<=4 ? g : g+(km-4)*k)*100)/100;
 }
+// Zuzahlung (KTS-ZZ): 10 % vom Fahrpreis, mindestens 5 €, höchstens 10 €
+function ktsBerechneZZ(betrag) { return Math.min(10, Math.max(5, betrag * 0.10)); }
+
 function onKtsKmChange() {
-  const km = parseFloat(document.getElementById('ktsKm').value)||0;
-  if (!km) { document.getElementById('ktsInfo').textContent='— km eingeben'; clearMoney('taxa'); return; }
+  const km  = parseFloat(document.getElementById('ktsKm').value)||0;
+  const isZZ = document.getElementById('zahlart').value === 'KTS-ZZ';
+  if (!km) {
+    document.getElementById('ktsInfo').textContent = '— km eingeben';
+    clearMoney('taxa'); clearMoney('ktsZZ'); calc(); return;
+  }
   const betrag = calcKtsTaxa(km);
   setMoney('taxa', betrag);
-  document.getElementById('ktsInfo').textContent = km+'km → '+fmt(betrag);
-  const isZZ = document.getElementById('zahlart').value === 'KTS-ZZ';
   if (isZZ) {
-    const zz = Math.round(Math.max(0, betrag-17.90)*100)/100;
-    document.getElementById('ktsZZ').value = fmt(zz);
-    document.getElementById('ktsZZ').dataset.cents = String(Math.round(zz*100));
+    const zz = Math.round(ktsBerechneZZ(betrag)*100)/100;
+    setMoney('ktsZZ', zz);
+    document.getElementById('ktsInfo').textContent = km+' km → '+fmt(betrag)+' + '+fmt(zz)+' ZZ';
+  } else {
+    clearMoney('ktsZZ');
+    document.getElementById('ktsInfo').textContent = km+' km → '+fmt(betrag);
   }
   calc();
 }
@@ -604,6 +612,8 @@ function onZahlartChange() {
   document.getElementById('qBar')?.classList.toggle('active', z==='Bar');
   document.getElementById('qKK')?.classList.toggle('active', z==='KK');
   document.getElementById('qFNA')?.classList.toggle('active', z==='FN-A');
+  if (kts) onKtsKmChange();
+  else { clearMoney('ktsZZ'); document.getElementById('ktsInfo').textContent = '— km eingeben'; }
   calc();
 }
 
@@ -666,10 +676,10 @@ function saveFahrt() {
   let fahrt;
   if (kts) {
     const km     = parseFloat(document.getElementById('ktsKm').value)||0;
-    const zz     = getMoney('ktsZZ');
+    const zz     = z==='KTS-ZZ' ? getMoney('ktsZZ') : 0;
     const ktsTip = getMoney('ktsTip');
     const anteil = Math.round(taxa*0.45*10)/10;
-    fahrt = { id:_editId||Date.now(), datum, nr, taxa, zahlart:z, bezahlt:taxa, rueckgeld:0, tip:ktsTip, anteil, gesamt:Math.round((anteil+ktsTip)*100)/100, komm:0, km, zz, ust:ustPct, ustBetrag:calcUSt(taxa), rechnungNr:'' };
+    fahrt = { id:_editId||Date.now(), datum, nr, taxa, zahlart:z, bezahlt:Math.round((taxa+zz)*100)/100, rueckgeld:0, tip:ktsTip, anteil, gesamt:Math.round((anteil+ktsTip)*100)/100, komm:0, km, zz, ust:ustPct, ustBetrag:calcUSt(taxa), rechnungNr:'' };
   } else {
     const bezahltRaw = getMoney('bezahlt');
     const bezahlt    = bezahltRaw>0 ? bezahltRaw : taxa;
@@ -706,6 +716,8 @@ function editFahrt(id) {
   if (f.zahlart==='KTS'||f.zahlart==='KTS-ZZ') {
     document.getElementById('ktsKm').value = f.km||'';
     setMoney('ktsTip', f.tip);
+    if (f.zahlart==='KTS-ZZ') setMoney('ktsZZ', f.zz);
+    document.getElementById('ktsInfo').textContent = (f.km||0)+' km → '+fmt(f.taxa)+(f.zahlart==='KTS-ZZ' ? ' + '+fmt(f.zz||0)+' ZZ' : '');
   } else {
     setMoney('bezahlt', f.bezahlt);
     setMoney('komm', f.komm);
