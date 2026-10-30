@@ -434,8 +434,8 @@ td.red   { color:var(--red);   font-weight:700; }
       <div class="sa-netto-val" id="saNetto">—</div>
     </div>
       </div>
-  <div id="exportTagWrap" style="display:none;margin-top:10px">
-    <button class="btn-import" style="border-color:var(--accent);color:var(--accent)" onclick="exportSchichtTag()">☁️ Diese Schicht ins Google Sheet exportieren</button>
+  <div id="exportTagWrap" style="margin-top:10px">
+    <button class="btn-import" style="border-color:var(--accent);color:var(--accent)" onclick="exportSchichtTag()">☁️ Tag mit Google Sheet abgleichen</button>
     <div id="cloudStatusTag" style="margin-top:6px;font-size:12px;color:var(--muted);text-align:center"></div>
   </div>
 </div>
@@ -471,8 +471,7 @@ td.red   { color:var(--red);   font-weight:700; }
     <div class="card-title">☁️ Google Sheet</div>
     <div class="sett-field"><label>Apps Script URL</label><input type="text" id="sApiUrl" placeholder="https://script.google.com/..."></div>
     <div class="sett-field"><label>Fahrer-ID</label><input type="text" id="sFahrerId" inputmode="numeric" placeholder="3010"></div>
-    <div class="sett-field"><label>Chef-Sheet-ID</label><input type="text" id="sChefId" placeholder="Standard wird verwendet"></div>
-    <button class="btn-import" style="border-color:var(--accent);color:var(--accent)" onclick="exportAlleSchichten()">↑ Export: alle Schichten ins Google Sheet</button>
+    <button class="btn-import" style="border-color:var(--accent);color:var(--accent)" onclick="exportAlleSchichten()">↑ Export: alle Fahrten ins Google Sheet</button>
     <button class="btn-import" onclick="importSheet()">↓ Import: alle Fahrten aus Google Sheet laden</button>
     <div id="cloudStatus" style="margin-top:8px;font-size:12px;color:var(--muted);text-align:center"></div>
   </div>
@@ -498,8 +497,7 @@ td.red   { color:var(--red);   font-weight:700; }
 // ═══════════════════════════════════════════════
 // KONSTANTEN
 // ═══════════════════════════════════════════════
-const KEYS = { FAHRTEN:'tx_fahrten', DRIVER:'tx_driver', API_URL:'tx_api', FAHRER_ID:'tx_fid', KTS_GRUND:'tx_kts_g', KTS_KM:'tx_kts_k', CHEF_ID:'tx_chef' };
-const CHEF_ID_FEST = '1AglogEKdpO8YLp1FxdMBetZcLE5WjmbUT5s8mK2ia9E';
+const KEYS = { FAHRTEN:'tx_fahrten', DRIVER:'tx_driver', API_URL:'tx_api', FAHRER_ID:'tx_fid', KTS_GRUND:'tx_kts_g', KTS_KM:'tx_kts_k' };
 const MN = {'01':'Jan','02':'Feb','03':'Mrz','04':'Apr','05':'Mai','06':'Jun','07':'Jul','08':'Aug','09':'Sep','10':'Okt','11':'Nov','12':'Dez'};
 let fahrten = [], fahrerId = '3010', ustPct = 7, _editId = null, _editNr = null;
 
@@ -663,7 +661,7 @@ function saveFahrt() {
   const datum = document.getElementById('dateInput').value;
   const kts = z==='KTS'||z==='KTS-ZZ';
   const tagF = fahrten.filter(f=>f.datum===datum);
-  const nr = _editNr !== null ? _editNr : tagF.length+1;
+  const nr = _editNr !== null ? _editNr : tagF.reduce((m,f)=>Math.max(m,f.nr||0),0)+1;
 
   let fahrt;
   if (kts) {
@@ -723,7 +721,12 @@ function editFahrt(id) {
 }
 
 function deleteFahrt(id) {
+  const f0 = fahrten.find(x=>String(x.id)===String(id));
+  if (!f0) return;
+  if (!confirm('Fahrt #' + f0.nr + ' (' + fmt(f0.taxa) + ') löschen?')) return;
   fahrten = fahrten.filter(f=>String(f.id)!==String(id));
+  // Nummern des Tages lückenlos neu vergeben (wie in der alten App)
+  fahrten.filter(f=>f.datum===f0.datum).sort((a,b)=>a.nr-b.nr).forEach((f,i)=>{ f.nr = i+1; });
   save(); render(); toast('🗑 Gelöscht');
 }
 
@@ -745,7 +748,6 @@ function clearForm() {
 function render() {
   const datum = document.getElementById('dateInput').value;
   const tf = fahrten.filter(f=>f.datum===datum);
-  document.getElementById('exportTagWrap').style.display = tf.length ? 'block' : 'none';
   const [y,m,d] = datum.split('-');
   document.getElementById('datumBadge').textContent = new Date(datum+'T12:00').toLocaleDateString('de-DE',{weekday:'short',day:'2-digit',month:'2-digit'});
   document.getElementById('statLabelNetto').textContent = d+'.'+m+' Netto';
@@ -983,8 +985,6 @@ function saveSettings() {
   const fid    = document.getElementById('sFahrerId').value.trim();
   if (apiUrl) ls.set(KEYS.API_URL, apiUrl);
   if (fid)    { fahrerId=fid; ls.set(KEYS.FAHRER_ID, fid); }
-  const chef = document.getElementById('sChefId').value.trim();
-  if (chef) ls.set(KEYS.CHEF_ID, chef);
   toast('✓ Einstellungen gespeichert');
 }
 function loadSettingsUI() {
@@ -997,7 +997,6 @@ function loadSettingsUI() {
   setMoney('sKtsKm',    t.km);
   document.getElementById('sApiUrl').value   = ls.get(KEYS.API_URL)||'';
   document.getElementById('sFahrerId').value = ls.get(KEYS.FAHRER_ID)||fahrerId||'';
-  document.getElementById('sChefId').value   = ls.get(KEYS.CHEF_ID)||'';
 }
 
 // ═══════════════════════════════════════════════
@@ -1028,10 +1027,9 @@ async function importSheet() {
 // GOOGLE SHEET (Apps Script)
 // ═══════════════════════════════════════════════
 async function apiCall(url, action, data={}) {
-  const chefId = ls.get(KEYS.CHEF_ID) || CHEF_ID_FEST;
-  // chefId + fahrerId als URL-Parameter: überleben den 302-Redirect (Body geht dabei verloren)
-  const params = new URLSearchParams({ action, fahrerId, chefId });
-  const body   = JSON.stringify({ action, fahrerId, chefId, ...data });
+  // fahrerId als URL-Parameter: überlebt den 302-Redirect (Body geht dabei verloren)
+  const params = new URLSearchParams({ action, fahrerId });
+  const body   = JSON.stringify({ action, fahrerId, ...data });
   const res    = await fetch(url + '?' + params, {
     method:'POST', headers:{'Content-Type':'text/plain;charset=utf-8'}, body, redirect:'follow' });
   const text = await res.text();
@@ -1043,59 +1041,52 @@ function cloudCfg() {
   const v = id => { const el = document.getElementById(id); return el ? el.value.trim() : ''; };
   const url = v('sApiUrl') || ls.get(KEYS.API_URL) || '';
   const fid = v('sFahrerId') || ls.get(KEYS.FAHRER_ID) || fahrerId;
-  const chef = v('sChefId');
   if (url) ls.set(KEYS.API_URL, url);
   if (fid) { ls.set(KEYS.FAHRER_ID, fid); fahrerId = fid; }
-  if (chef) ls.set(KEYS.CHEF_ID, chef);
   return { url, fid };
 }
 function setCloudStatus(msg, tag) {
   [tag ? 'cloudStatusTag' : 'cloudStatus'].forEach(id => { const el = document.getElementById(id); if (el) el.textContent = msg; });
 }
-// Name + Wagennummer ins Fahrer-Blatt, damit sie im Chef-Sheet erscheinen
-async function ensureProfile(url) {
-  const d = getDriverProfile();
-  await apiCall(url, 'saveFahrer', { profil: { name: d.name, fahrerNr: d.driverNr || fahrerId, wagenNr: d.wagenNr } }).catch(()=>{});
-}
 async function exportAlleSchichten() {
   const { url } = cloudCfg();
   if (!url) { toast('⚠️ Bitte Apps-Script-URL eintragen'); return; }
-  const tage = {};
-  for (const f of fahrten) (tage[f.datum] = tage[f.datum] || []).push(f);
-  const daten = Object.keys(tage).sort();
-  if (!daten.length) { toast('Keine Fahrten vorhanden'); return; }
-  setCloudStatus('⏳ Sende ' + daten.length + ' Schichten...');
+  if (!fahrten.length) { toast('Keine Fahrten vorhanden'); return; }
+  setCloudStatus('⏳ Sende ' + fahrten.length + ' Fahrten...');
   try {
-    await ensureProfile(url);
-    // 1) Fahrer-Sheet (Taxi_3010, Blatt "Fahrten"): vorhandene Fahrten werden übersprungen
-    const r1 = await apiCall(url, 'bulkImport', { fahrten });
-    if (!r1.ok) throw new Error('Taxi_3010: ' + (r1.error || 'Fehler'));
-    // 2) Chef-Sheet: Übersicht + Monatsblätter
-    const schichten = daten.map(datum => ({ datum, beginn:'', ende:'', fahrten: tage[datum] }));
-    const r = await apiCall(url, 'bulkSaveSchichten', { schichten });
-    if (!r.ok) throw new Error('Chef-Sheet: ' + (r.error || 'Fehler'));
-    setCloudStatus('✓ Taxi_3010: ' + r1.importiert + ' neu, ' + r1.uebersprungen + ' vorhanden · Chef-Sheet: ' + r.schichten + ' Schichten, ' + r.fahrten + ' Fahrten');
+    // Vorhandene Fahrten (Datum + Nr) werden übersprungen; Korrekturen: Tag abgleichen
+    const r = await apiCall(url, 'bulkImport', { fahrten });
+    if (!r.ok) throw new Error(r.error || 'Fehler');
+    setCloudStatus('✓ Taxi_3010: ' + r.importiert + ' neu, ' + r.uebersprungen + ' schon vorhanden');
     toast('✓ Export fertig');
   } catch(e) { setCloudStatus('❌ ' + e.message); toast('❌ ' + e.message); }
 }
+// Tag-Abgleich: das Sheet bekommt exakt den lokalen Stand dieses Tages
+// (Fahrten hinzufügen/ändern, gelöschte entfernen; ohne Fahrten wird der Tag im Sheet geleert).
 async function exportSchichtTag() {
   const { url } = cloudCfg();
   if (!url) { toast('⚠️ URL fehlt: unter Einstellungen eintragen'); showTab('einstellungen'); return; }
   const datum = document.getElementById('dateInput').value;
   const tf = fahrten.filter(f => f.datum === datum);
-  if (!tf.length) { toast('Keine Fahrten an diesem Tag'); return; }
-  setCloudStatus('⏳ Sende ' + datum + '...', true);
+  const dl = datum.split('-').reverse().join('.');
+  const alt = 'Script nicht aktuell: bitte neu deployen';
   try {
-    await ensureProfile(url);
-    // 1) Fahrer-Sheet (Taxi_3010): Zeilen dieses Tages werden ersetzt
-    const r1 = await apiCall(url, 'bulkImport', { fahrten: tf, ersetzen: true });
-    if (!r1.ok) throw new Error('Taxi_3010: ' + (r1.error || 'Fehler'));
-    // 2) Chef-Sheet
-    const r = await apiCall(url, 'saveSchicht', { datum, beginn:'', ende:'', fahrten: tf });
-    if (!r.ok) throw new Error('Chef-Sheet: ' + (r.error || 'Fehler'));
-    const alt = (r1.geloescht === undefined) ? ' ⚠️ Script nicht aktuell: bitte neu deployen' : '';
-    setCloudStatus('✓ ' + tf.length + ' Fahrten → Taxi_3010 + Chef-Sheet' + alt, true);
-    toast('✓ Schicht exportiert');
+    if (!tf.length) {
+      if (!confirm('Am ' + dl + ' gibt es lokal keine Fahrten.\nDen Tag im Google Sheet leeren?')) return;
+      setCloudStatus('⏳ Leere ' + dl + '...', true);
+      const r = await apiCall(url, 'clearTag', { datum });
+      if (!r.ok) throw new Error(/Unbekannte Aktion/.test(r.error||'') ? alt : (r.error || 'Fehler'));
+      setCloudStatus('✓ ' + dl + ' im Sheet geleert (' + r.geloescht + ' Fahrten entfernt)', true);
+      toast('✓ Tag geleert');
+      return;
+    }
+    setCloudStatus('⏳ Gleiche ' + dl + ' ab...', true);
+    // Zeilen dieses Tages in Taxi_3010 werden durch den lokalen Stand ersetzt
+    const r = await apiCall(url, 'bulkImport', { fahrten: tf, ersetzen: true });
+    if (!r.ok) throw new Error(r.error || 'Fehler');
+    const hinweis = (r.geloescht === undefined) ? ' ⚠️ ' + alt : '';
+    setCloudStatus('✓ ' + dl + ': ' + tf.length + ' Fahrten abgeglichen (' + (r.geloescht||0) + ' alte Zeilen ersetzt)' + hinweis, true);
+    toast('✓ Tag abgeglichen');
   } catch(e) { setCloudStatus('❌ ' + e.message, true); toast('❌ ' + e.message); }
 }
 
@@ -1151,7 +1142,7 @@ const DEFAULT_FAHRTEN = [{"id":1000,"datum":"2026-01-01","nr":1,"taxa":12.1,"bez
 function init() {
   // Einmalige Übernahme der Daten aus der früheren App-Version (andere Speicher-Schlüssel)
   [['taxi_fahrten',KEYS.FAHRTEN],['taxi_driver',KEYS.DRIVER],['taxi_api_url',KEYS.API_URL],
-   ['taxi_fahrer_id',KEYS.FAHRER_ID],['kts_grund',KEYS.KTS_GRUND],['kts_km',KEYS.KTS_KM],['taxi_chef_id',KEYS.CHEF_ID]].forEach(([from,to])=>{
+   ['taxi_fahrer_id',KEYS.FAHRER_ID],['kts_grund',KEYS.KTS_GRUND],['kts_km',KEYS.KTS_KM]].forEach(([from,to])=>{
     if (!ls.get(to) && ls.get(from)) ls.set(to, ls.get(from));
   });
   const saved = ls.get(KEYS.FAHRTEN);
