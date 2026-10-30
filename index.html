@@ -120,11 +120,12 @@ select { background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.or
 .month-name { font-size:12px; font-weight:700; color:var(--accent); margin-bottom:8px; }
 .mc-row { display:flex; justify-content:space-between; font-size:13px; padding:2px 0; }
 .mc-row.hl { font-weight:700; color:var(--green); border-top:1px solid var(--border); margin-top:4px; padding-top:6px; }
-.ov-table { width:100%; border-collapse:collapse; font-size:13px; }
-.ov-table th { text-align:left; color:var(--muted); font-size:10px; text-transform:uppercase; letter-spacing:.05em; padding:6px 4px; border-bottom:1px solid var(--border); }
-.ov-table td { padding:8px 4px; border-bottom:1px solid #1e1e1e; }
+.ov-table { width:100%; border-collapse:collapse; font-size:12px; white-space:nowrap; }
+.ov-table th { text-align:left; color:var(--muted); font-size:9px; text-transform:uppercase; letter-spacing:.03em; padding:6px 3px; border-bottom:1px solid var(--border); }
+.ov-table td { padding:8px 3px; border-bottom:1px solid #1e1e1e; }
 .ov-table tr:last-child td { border:none; }
 td.green { color:var(--green); font-weight:700; }
+td.blue  { color:var(--blue);  font-weight:700; }
 td.red   { color:var(--red);   font-weight:700; }
 
 /* ── Export ───────────────────────────────────── */
@@ -916,8 +917,9 @@ function renderUebersicht() {
       <div class="month-name">${MN[mo]||mo} ${y}</div>
       <div class="mc-row"><span>Fahrten</span><span>${a.n}</span></div>
       <div class="mc-row"><span>Umsatz</span><span>${fmt(a.umsatz)}</span></div>
+      <div class="mc-row"><span>Anteil</span><span>${fmt(a.anteil)}</span></div>
       <div class="mc-row"><span>Trinkgeld</span><span>${fmt(a.tip)}</span></div>
-      <div class="mc-row hl"><span>Verdienst</span><span>${fmt(a.gesamt)}</span></div>
+      <div class="mc-row hl"><span>Summe</span><span>${fmt(a.anteil + a.tip)}</span></div>
     </div>`;
   }).join('');
 
@@ -932,17 +934,19 @@ function renderUebersicht() {
     const k50=df.reduce((s,f)=>s+(f.komm||0),0)*0.5;
     const kasse=Math.round(a.umsatz*0.55-nb+k50);
     const lbl=new Date(d+'T12:00').toLocaleDateString('de-DE',{day:'2-digit',month:'2-digit'});
-    return `<tr><td>${lbl}</td><td>${a.n}</td><td>${fmt(a.umsatz)}</td><td>${fmt(a.tip)}</td><td class="green">${fmt(a.anteil)}</td><td class="${kasse>0?'red':'green'}">${kasse>0?'+':''}${fmt(Math.abs(kasse))}</td></tr>`;
+    return `<tr><td>${lbl}</td><td>${a.n}</td><td>${fmtN(a.umsatz)}</td><td>${fmtN(a.tip)}</td><td class="green">${fmtN(a.anteil)}</td><td class="blue">${fmtN(a.anteil/14)}</td><td class="${kasse>0?'red':'green'}">${kasse>0?'+':''}${fmtN(Math.abs(kasse))}</td></tr>`;
   }).join('');
 
   document.getElementById('uebContent').innerHTML=`
     <div class="month-grid">${monthCards}</div>
     <div class="card">
       <div class="card-title">Schichten</div>
+      <div style="overflow-x:auto">
       <table class="ov-table">
-        <thead><tr><th>Datum</th><th>F</th><th>Umsatz</th><th>Tip</th><th>Netto</th><th>Kasse</th></tr></thead>
+        <thead><tr><th>Datum</th><th>F</th><th>Umsatz €</th><th>Tip €</th><th>Netto €</th><th>Std</th><th>Kasse €</th></tr></thead>
         <tbody>${dateRows}</tbody>
-      </table>
+      </table></div>
+      <div style="font-size:10px;color:var(--muted);margin-top:8px;line-height:1.5">Netto = Anteil · Std = Nettostunden (Anteil ÷ 14) · Kasse: grün = Unternehmer zahlt dir, rot = du zahlst</div>
     </div>`;
 }
 
@@ -1010,8 +1014,9 @@ async function importSheet() {
       if (!Array.isArray(f)) return f;
       return {id:String(f[0]),datum:String(f[2]).slice(0,10),nr:Number(f[3]),taxa:Number(f[4]),zahlart:String(f[5]||'Bar'),bezahlt:Number(f[6]||0),rueckgeld:Number(f[7]||0),tip:Number(f[8]||0),anteil:Number(f[9]||0),gesamt:Number(f[10]||0),komm:Number(f[11]||0),km:Number(f[12]||0),zz:Number(f[13]||0),ust:parseInt(f[16])||7,rechnungNr:String(f[18]||'')};
     });
-    const exist = new Set(fahrten.map(f=>String(f.id)));
-    const neu   = imported.filter(f=>!exist.has(String(f.id)));
+    const key   = f => f.datum + '_' + f.nr;      // IDs unterscheiden sich lokal/Sheet
+    const exist = new Set(fahrten.map(key));
+    const neu   = imported.filter(f=>!exist.has(key(f)));
     fahrten = [...fahrten,...neu].sort((a,b)=>a.datum<b.datum?-1:a.datum>b.datum?1:a.nr-b.nr);
     save(); render();
     setCloudStatus('✓ ' + neu.length + ' neue Fahrten (' + fahrten.length + ' gesamt)');
@@ -1062,11 +1067,15 @@ async function exportAlleSchichten() {
   setCloudStatus('⏳ Sende ' + daten.length + ' Schichten...');
   try {
     await ensureProfile(url);
+    // 1) Fahrer-Sheet (Taxi_3010, Blatt "Fahrten"): vorhandene Fahrten werden übersprungen
+    const r1 = await apiCall(url, 'bulkImport', { fahrten });
+    if (!r1.ok) throw new Error('Taxi_3010: ' + (r1.error || 'Fehler'));
+    // 2) Chef-Sheet: Übersicht + Monatsblätter
     const schichten = daten.map(datum => ({ datum, beginn:'', ende:'', fahrten: tage[datum] }));
     const r = await apiCall(url, 'bulkSaveSchichten', { schichten });
-    if (!r.ok) throw new Error(r.error || 'Fehler');
-    setCloudStatus('✓ ' + r.schichten + ' Schichten, ' + r.fahrten + ' Fahrten übertragen');
-    toast('✓ ' + r.schichten + ' Schichten exportiert');
+    if (!r.ok) throw new Error('Chef-Sheet: ' + (r.error || 'Fehler'));
+    setCloudStatus('✓ Taxi_3010: ' + r1.importiert + ' neu, ' + r1.uebersprungen + ' vorhanden · Chef-Sheet: ' + r.schichten + ' Schichten, ' + r.fahrten + ' Fahrten');
+    toast('✓ Export fertig');
   } catch(e) { setCloudStatus('❌ ' + e.message); toast('❌ ' + e.message); }
 }
 async function exportSchichtTag() {
@@ -1078,9 +1087,14 @@ async function exportSchichtTag() {
   setCloudStatus('⏳ Sende ' + datum + '...', true);
   try {
     await ensureProfile(url);
+    // 1) Fahrer-Sheet (Taxi_3010): Zeilen dieses Tages werden ersetzt
+    const r1 = await apiCall(url, 'bulkImport', { fahrten: tf, ersetzen: true });
+    if (!r1.ok) throw new Error('Taxi_3010: ' + (r1.error || 'Fehler'));
+    // 2) Chef-Sheet
     const r = await apiCall(url, 'saveSchicht', { datum, beginn:'', ende:'', fahrten: tf });
-    if (!r.ok) throw new Error(r.error || 'Fehler');
-    setCloudStatus('✓ ' + tf.length + ' Fahrten übertragen', true);
+    if (!r.ok) throw new Error('Chef-Sheet: ' + (r.error || 'Fehler'));
+    const alt = (r1.geloescht === undefined) ? ' ⚠️ Script nicht aktuell: bitte neu deployen' : '';
+    setCloudStatus('✓ ' + tf.length + ' Fahrten → Taxi_3010 + Chef-Sheet' + alt, true);
     toast('✓ Schicht exportiert');
   } catch(e) { setCloudStatus('❌ ' + e.message, true); toast('❌ ' + e.message); }
 }
@@ -1088,6 +1102,7 @@ async function exportSchichtTag() {
 // ═══════════════════════════════════════════════
 // EXPORT
 // ═══════════════════════════════════════════════
+function fmtN(n) { return (Math.round(n*100)/100).toFixed(2).replace('.',','); }
 function fmt(n) { return (Math.round(n*100)/100).toFixed(2).replace('.',',')+' €'; }
 function fmtCsv(n) { return (Math.round(n*100)/100).toFixed(2).replace('.',','); }
 
