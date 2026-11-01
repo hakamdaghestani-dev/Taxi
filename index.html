@@ -266,6 +266,24 @@ td.red   { color:var(--red);   font-weight:700; }
   .pay-fahrer .sa-netto-val      { color: var(--green); }
   .pay-zero .sa-netto-val        { color: var(--accent); }
 
+/* ── Schichtübersicht (Original) ──────────────── */
+.summary { --surface:#161616; --surface2:#1e1e1e; --border:#2a2a2a; --accent:#f0c040; --text:#f0ede8; --text-muted:#7a7570; --green:#4caf78; --bg:#0d0d0d;
+  background:var(--surface); border:1px solid var(--accent); border-radius:8px; padding:20px; margin-top:10px; margin-bottom:10px; }
+.summary h2 { font-family:Verdana, Geneva, sans-serif; font-size:0.8rem; font-weight:700; color:var(--accent); text-transform:uppercase; letter-spacing:0.12em; margin-bottom:16px; }
+.summary-grid { display:grid; grid-template-columns:1fr; gap:12px; margin-bottom:16px; }
+.sum-item { background:var(--surface2); border-radius:6px; padding:12px; }
+.slabel { font-size:0.65rem; color:var(--text-muted); text-transform:uppercase; letter-spacing:0.08em; margin-bottom:4px; }
+.sval { font-family:Verdana, Geneva, sans-serif; font-weight:700; font-size:1.3rem; color:var(--text); }
+.sval.accent { color:var(--accent); }
+.sval.green { color:var(--green); }
+.total-bar { background:var(--accent); color:var(--bg); border-radius:6px; padding:16px; display:flex; justify-content:space-between; align-items:center; }
+.tlabel { font-family:Verdana, Geneva, sans-serif; font-weight:700; font-size:0.85rem; letter-spacing:0.05em; }
+.tval { font-family:Verdana, Geneva, sans-serif; font-weight:800; font-size:1.6rem; letter-spacing:-0.02em; }
+.zahlung-breakdown { margin-top:12px; display:flex; flex-wrap:wrap; gap:8px; }
+.zahlung-chip { background:var(--surface2); border:1px solid var(--border); border-radius:4px; padding:6px 10px; font-size:0.75rem; display:flex; gap:8px; align-items:center; }
+.zname { color:var(--text-muted); font-size:0.65rem; text-transform:uppercase; letter-spacing:0.06em; }
+.zamount { color:var(--text); font-weight:500; }
+
 /* ── Leer ─────────────────────────────────────── */
 .empty { text-align:center; padding:30px 20px; color:var(--muted); font-size:14px; }
 .empty .icon { font-size:32px; margin-bottom:8px; }
@@ -288,6 +306,7 @@ td.red   { color:var(--red);   font-weight:700; }
     <input type="date" id="dateInput" onchange="onDateChange()">
     <div class="datum-badge" id="datumBadge">—</div>
   </div>
+  <div id="syncInfo" style="font-size:11px;color:var(--muted);margin:-4px 2px 8px;min-height:14px"></div>
   <div class="stats">
     <div class="stat"><div class="stat-label" id="statLabelNetto">Tag Netto</div><div class="stat-value" id="statHeuteNetto" style="color:var(--green)">—</div></div>
     <div class="stat"><div class="stat-label" id="statLabelTip">Tag Tip</div><div class="stat-value" id="statHeuteTip" style="color:var(--accent)">—</div></div>
@@ -400,6 +419,22 @@ td.red   { color:var(--red);   font-weight:700; }
   <!-- Fahrtliste -->
   <div id="fahrtListe"></div>
 
+  <!-- Schichtübersicht (wie in der alten App) -->
+  <div class="summary" id="summarySection" style="display:none">
+    <h2>Schichtübersicht</h2>
+    <div class="summary-grid">
+      <div class="sum-item"><div class="slabel">Gesamt Taxameter</div><div class="sval" id="sumTaxa">0,00 €</div></div>
+      <div class="sum-item"><div class="slabel">Fahrten</div><div class="sval accent" id="sumFahrten">0</div></div>
+      <div class="sum-item"><div class="slabel">Trinkgeld</div><div class="sval green" id="sumTip">0,00 €</div></div>
+      <div class="sum-item"><div class="slabel">Dein Verdienst (45%)</div><div class="sval green" id="sumAnteil">0,00 €</div></div>
+    </div>
+    <div class="total-bar">
+      <div class="tlabel">Dein Verdienst gesamt</div>
+      <div class="tval" id="sumGesamt">0,00 €</div>
+    </div>
+    <div class="zahlung-breakdown" id="zahlungBreakdown"></div>
+  </div>
+
   <!-- Schichtabrechnung -->
   <div class="schicht-abrechnung" id="schichtAbrSection" style="display:none">
     <h2><span>Schichtabrechnung</span><span class="sa-sub">Kassenabschluss</span></h2>
@@ -484,6 +519,7 @@ td.red   { color:var(--red);   font-weight:700; }
       <button class="btn-export" onclick="exportAllCSV()">↓ Alle Fahrten als CSV</button>
     </div>
   </div>
+  <div style="text-align:center;font-size:11px;color:var(--muted);margin:4px 0 24px">App-Version <span id="appVersion"></span></div>
 </div>
 
 <!-- Toast -->
@@ -498,6 +534,8 @@ td.red   { color:var(--red);   font-weight:700; }
 // KONSTANTEN
 // ═══════════════════════════════════════════════
 const KEYS = { FAHRTEN:'tx_fahrten', DRIVER:'tx_driver', API_URL:'tx_api', FAHRER_ID:'tx_fid', KTS_GRUND:'tx_kts_g', KTS_KM:'tx_kts_k' };
+const APP_VERSION = '2026-11-01-b';
+const DEFAULT_API_URL = 'https://script.google.com/macros/s/AKfycbxJl_hZFrV8lAKYtiYk7IeXLbc4Nj1BiVkiFYSrzU2cAqfzbiXYRcz3uJSOPfaQPgc/exec';
 const MN = {'01':'Jan','02':'Feb','03':'Mrz','04':'Apr','05':'Mai','06':'Jun','07':'Jul','08':'Aug','09':'Sep','10':'Okt','11':'Nov','12':'Dez'};
 let fahrten = [], fahrerId = '3010', ustPct = 7, _editId = null, _editNr = null;
 
@@ -757,6 +795,21 @@ function clearForm() {
 // ═══════════════════════════════════════════════
 // RENDER
 // ═══════════════════════════════════════════════
+// ── Schichtübersicht (wird bei jedem render() aktualisiert: nach jeder Fahrt, Änderung, Löschung, Import) ──
+function renderSummary(tf) {
+  const sum = key => tf.reduce((s,f)=>s+(f[key]||0),0);
+  document.getElementById('sumTaxa').textContent    = fmt(sum('taxa'));
+  document.getElementById('sumFahrten').textContent = tf.length;
+  document.getElementById('sumTip').textContent     = fmt(sum('tip'));
+  document.getElementById('sumAnteil').textContent  = fmt(sum('anteil'));
+  document.getElementById('sumGesamt').textContent  = fmt(sum('gesamt'));
+  document.getElementById('summarySection').style.display = 'block';
+  const byZahl = {};                                  // Taxameter je Zahlart, in der Reihenfolge des ersten Auftretens
+  tf.forEach(f => { byZahl[f.zahlart] = (byZahl[f.zahlart]||0) + f.taxa; });
+  document.getElementById('zahlungBreakdown').innerHTML = Object.entries(byZahl)
+    .map(([n,a]) => `<div class="zahlung-chip"><span class="zname">${displayZahlart(n)}</span><span class="zamount">${fmt(a)}</span></div>`).join('');
+}
+
 function render() {
   const datum = document.getElementById('dateInput').value;
   const tf = fahrten.filter(f=>f.datum===datum);
@@ -784,6 +837,7 @@ function render() {
   if (!tf.length) {
     liste.innerHTML = '<div class="empty"><div class="icon">🚕</div>Noch keine Fahrten</div>';
     document.getElementById('schichtAbrSection').style.display='none';
+    document.getElementById('summarySection').style.display='none';
     return;
   }
 
@@ -807,6 +861,7 @@ function render() {
     </div>`).join('');
 
   // Schichtabrechnung
+  renderSummary(tf);
   renderSchichtAbrechnung(tf);
 }
 
@@ -1000,6 +1055,7 @@ function saveSettings() {
   toast('✓ Einstellungen gespeichert');
 }
 function loadSettingsUI() {
+  const av = document.getElementById('appVersion'); if (av) av.textContent = APP_VERSION;
   const d = JSON.parse(ls.get(KEYS.DRIVER)||'{}');
   document.getElementById('sName').value     = d.name     ||'';
   document.getElementById('sFahrerNr').value = d.fahrerNr ||fahrerId||'';
@@ -1007,13 +1063,141 @@ function loadSettingsUI() {
   const t = getKts();
   setMoney('sKtsGrund', t.grund);
   setMoney('sKtsKm',    t.km);
-  document.getElementById('sApiUrl').value   = ls.get(KEYS.API_URL)||'';
+  document.getElementById('sApiUrl').value   = getApiUrl();
   document.getElementById('sFahrerId').value = ls.get(KEYS.FAHRER_ID)||fahrerId||'';
 }
 
 // ═══════════════════════════════════════════════
 // IMPORT
 // ═══════════════════════════════════════════════
+// ── Datum / letzte Schicht ──────────────────────────────────
+function localISO(d = new Date()) {            // lokales Datum (nicht UTC: wichtig für Nachtschichten)
+  return d.getFullYear() + '-' + String(d.getMonth()+1).padStart(2,'0') + '-' + String(d.getDate()).padStart(2,'0');
+}
+function letzteSchicht() {
+  const ds = fahrten.map(f=>f.datum).filter(Boolean).sort();
+  return ds.length ? ds[ds.length-1] : localISO();
+}
+
+// ── Abgleich-Status (sichtbar unter dem Datum) ───────────────
+function setSyncInfo(text, warn) {
+  const el = document.getElementById('syncInfo'); if (!el) return;
+  el.textContent = text; el.style.color = warn ? 'var(--accent)' : 'var(--muted)';
+  el.style.cursor = ''; el.onclick = null;
+}
+function uhrzeit() { return new Date().toLocaleTimeString('de-DE', {hour:'2-digit', minute:'2-digit'}); }
+function syncGrund(e) {
+  const m = String((e && e.message) || e || '');
+  if (/Zeitüberschreitung/.test(m)) return 'Zeitüberschreitung (Netz zu langsam)';
+  if (/Failed to fetch|NetworkError|Load failed/i.test(m)) return 'keine Verbindung zum Sheet';
+  if (/Ungültige Antwort/.test(m)) return 'Script antwortet nicht richtig (URL/Freigabe prüfen)';
+  return m.slice(0,80) || 'unbekannter Fehler';
+}
+
+// ── Google Sheet → App ─────────────────────────────────────
+function sheetToFahrt(f) {
+  if (!Array.isArray(f)) return { ...f, datum: String(f.datum||'').slice(0,10) };
+  return {id:String(f[0]),datum:String(f[2]).slice(0,10),nr:Number(f[3]),taxa:Number(f[4]),zahlart:String(f[5]||'Bar'),bezahlt:Number(f[6]||0),rueckgeld:Number(f[7]||0),tip:Number(f[8]||0),anteil:Number(f[9]||0),gesamt:Number(f[10]||0),komm:Number(f[11]||0),km:Number(f[12]||0),zz:Number(f[13]||0),ust:parseInt(f[16])||7,rechnungNr:String(f[18]||'')};
+}
+
+// Beim Start: einmal mit dem Google Sheet abgleichen, dann die letzte Schicht zeigen.
+// Übernommen werden nur Tage, die lokal noch gar nicht vorhanden sind. Lokale Tage bleiben unangetastet,
+// damit gelöschte oder geänderte Fahrten nicht aus dem Sheet zurückkommen.
+let _syncRunning = false;
+async function startupSync() {
+  const url = getApiUrl();
+  if (!url || _syncRunning) return;
+  _syncRunning = true;
+  const di = document.getElementById('dateInput');
+  const angezeigt = di.value;
+  setSyncInfo('☁️ Gleiche mit Google Sheet ab …');
+  try {
+    const r = await Promise.race([
+      apiCall(url, 'getFahrten', {}),
+      new Promise((_, rej) => setTimeout(() => rej(new Error('Zeitüberschreitung')), 30000))
+    ]);
+    if (!r.ok) throw new Error(r.error || 'Fehler im Script');
+    const lokaleTage = new Set(fahrten.map(f => f.datum));
+    const neu = (r.fahrten || []).map(sheetToFahrt).filter(f => f.datum && !lokaleTage.has(f.datum));
+    if (neu.length) {
+      fahrten = [...fahrten, ...neu].sort((a,b) => a.datum<b.datum?-1 : a.datum>b.datum?1 : a.nr-b.nr);
+      save();
+      const tage = new Set(neu.map(f => f.datum)).size;
+      toast('☁️ ' + neu.length + ' Fahrten aus dem Sheet übernommen (' + tage + (tage===1 ? ' Schicht)' : ' Schichten)'));
+    }
+    setSyncInfo('☁️ Abgleich ' + uhrzeit() + (neu.length ? ' · ' + neu.length + ' neue Fahrten' : ' · alles aktuell'));
+    // zur letzten Schicht springen, außer du hast inzwischen selbst ein anderes Datum gewählt
+    if (di.value === angezeigt) di.value = letzteSchicht();
+    render();
+  } catch(e) {
+    setSyncInfo('⚠️ Kein Abgleich beim Start: ' + syncGrund(e), true);   // lokale Daten bleiben
+  }
+  finally { _syncRunning = false; checkUpdate(); }
+}
+
+// App kommt nach längerer Pause zurück in den Vordergrund (iPhone hält Home-Bildschirm-Apps im Speicher,
+// ein Neustart findet dann nicht statt). Erkennung über eine Lücke im Sekundentakt: solange die App im
+// Hintergrund ist, stehen alle Timer still. Zusätzlich über Ereignisse. Behandelt wie ein Neustart,
+// aber nur, wenn gerade nichts eingegeben oder bearbeitet wird.
+const RESUME_MS = 2 * 60 * 1000;
+let _lastActive = Date.now();
+function checkResume() {
+  const now = Date.now(), gap = now - _lastActive;
+  _lastActive = now;
+  if (gap > RESUME_MS && formLeer()) {
+    document.getElementById('dateInput').value = letzteSchicht();
+    render();
+    startupSync();
+  }
+}
+setInterval(() => { checkResume(); tryAutoUpdate(); }, 5000);
+document.addEventListener('visibilitychange', () => { if (!document.hidden) checkResume(); });
+window.addEventListener('pageshow', checkResume);
+window.addEventListener('focus', checkResume);
+
+// ── Automatische App-Aktualisierung ──────────────────────────
+// Liegt eine neuere Version auf dem Server, lädt sich die App von selbst neu (Home-Bildschirm-Apps
+// bleiben sonst tagelang auf dem alten Stand). Nie mitten in einer Eingabe: erst wenn nichts angefangen ist.
+let _updatePending = null;
+function formLeer() {
+  return !_editId && ['taxa','bezahlt','tip','komm','ktsTip'].every(id => !getMoney(id))
+      && !document.getElementById('ktsKm').value && !document.getElementById('rechnungNr').value;
+}
+function safeToReload() {
+  const a = document.activeElement;
+  const tippt = a && /^(INPUT|SELECT|TEXTAREA)$/.test(a.tagName);
+  const einst = document.getElementById('panel-einstellungen').classList.contains('active');
+  return formLeer() && !tippt && !einst;
+}
+function doReload(url) { location.replace(url); }
+function updateSchonVersucht() { return new URL(location.href).searchParams.get('v') === _updatePending; }
+function tryAutoUpdate() {
+  if (!_updatePending || updateSchonVersucht() || !safeToReload()) return;
+  const u = new URL(location.href);
+  u.searchParams.set('v', _updatePending);       // eigener Cache-Eintrag: erzwingt frische Datei, keine Endlosschleife (siehe Prüfung oben)
+  setSyncInfo('🔄 Aktualisiere App …');
+  doReload(u.toString());
+}
+async function checkUpdate() {
+  try {
+    if (!/^https?:$/.test(location.protocol)) return;
+    const res = await fetch(location.href.split('#')[0], { cache: 'no-store' });
+    const m = (await res.text()).match(/const APP_VERSION = '([^']+)'/);
+    if (!m || m[1] === APP_VERSION) { _updatePending = null; return; }
+    _updatePending = m[1];
+    tryAutoUpdate();
+    if (_updatePending && (updateSchonVersucht() || !safeToReload())) {
+      // Konnte nicht sofort laden: Hinweis anzeigen (Tippen lädt sofort neu)
+      const el = document.getElementById('syncInfo');
+      el.textContent = updateSchonVersucht()
+        ? '🔄 Neue App-Version verfügbar: hier tippen zum Neuladen'
+        : '🔄 Neue App-Version: wird nach der Eingabe automatisch geladen (oder hier tippen)';
+      el.style.color = 'var(--accent)'; el.style.cursor = 'pointer';
+      el.onclick = () => location.reload();
+    }
+  } catch(e) { /* offline: egal */ }
+}
+
 async function importSheet() {
   const { url } = cloudCfg();
   if (!url) { toast('⚠️ API-URL eingeben'); return; }
@@ -1021,10 +1205,7 @@ async function importSheet() {
   try {
     const r = await apiCall(url, 'getFahrten', {});
     if (!r.ok) throw new Error(r.error||'Fehler');
-    const imported = (r.fahrten||[]).map(f=>{
-      if (!Array.isArray(f)) return f;
-      return {id:String(f[0]),datum:String(f[2]).slice(0,10),nr:Number(f[3]),taxa:Number(f[4]),zahlart:String(f[5]||'Bar'),bezahlt:Number(f[6]||0),rueckgeld:Number(f[7]||0),tip:Number(f[8]||0),anteil:Number(f[9]||0),gesamt:Number(f[10]||0),komm:Number(f[11]||0),km:Number(f[12]||0),zz:Number(f[13]||0),ust:parseInt(f[16])||7,rechnungNr:String(f[18]||'')};
-    });
+    const imported = (r.fahrten||[]).map(sheetToFahrt);
     const key   = f => f.datum + '_' + f.nr;      // IDs unterscheiden sich lokal/Sheet
     const exist = new Set(fahrten.map(key));
     const neu   = imported.filter(f=>!exist.has(key(f)));
@@ -1049,9 +1230,10 @@ async function apiCall(url, action, data={}) {
   catch(e) { throw new Error('Ungültige Antwort: ' + text.slice(0,200)); }
 }
 // Verbindungsdaten: Eingabefelder (falls ausgefüllt) sonst gespeicherte Werte; wird gleich gespeichert
+function getApiUrl() { return ls.get(KEYS.API_URL) || DEFAULT_API_URL; }   // gespeicherte URL, sonst Standard
 function cloudCfg() {
   const v = id => { const el = document.getElementById(id); return el ? el.value.trim() : ''; };
-  const url = v('sApiUrl') || ls.get(KEYS.API_URL) || '';
+  const url = v('sApiUrl') || getApiUrl();
   const fid = v('sFahrerId') || ls.get(KEYS.FAHRER_ID) || fahrerId;
   if (url) ls.set(KEYS.API_URL, url);
   if (fid) { ls.set(KEYS.FAHRER_ID, fid); fahrerId = fid; }
@@ -1098,6 +1280,7 @@ async function exportSchichtTag() {
     if (!r.ok) throw new Error(r.error || 'Fehler');
     const hinweis = (r.geloescht === undefined) ? ' ⚠️ ' + alt : '';
     setCloudStatus('✓ ' + dl + ': ' + tf.length + ' Fahrten abgeglichen (' + (r.geloescht||0) + ' alte Zeilen ersetzt)' + hinweis, true);
+    setSyncInfo('☁️ ' + dl + ' abgeglichen ' + uhrzeit());
     toast('✓ Tag abgeglichen');
   } catch(e) { setCloudStatus('❌ ' + e.message, true); toast('❌ ' + e.message); }
 }
@@ -1165,12 +1348,10 @@ function init() {
     fahrten = DEFAULT_FAHRTEN.slice();
     save();
   }
-  const dates = [...new Set(fahrten.map(f=>f.datum))].sort();
-  const today = new Date().toISOString().slice(0,10);
-  const di = document.getElementById('dateInput');
-  di.value = dates.includes(today) ? today : (dates[dates.length-1]||today);
+  document.getElementById('dateInput').value = letzteSchicht();
   onZahlartChange();
   render();
+  startupSync();                               // danach einmal mit dem Google Sheet abgleichen
 }
 
 document.addEventListener('DOMContentLoaded', init);
